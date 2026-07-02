@@ -11,7 +11,7 @@ Files: `index.html` (the site), `privacy.html` (linked from footer + form). No b
 | `44XXXXXXXXXX` | 3 WhatsApp links (final CTA, footer, sticky bar) | Your number in international format, no `+`, e.g. `447700900123`. |
 | `[X]` and `[MONTHS]` | Case study metrics | Real Diji Catering numbers. **Do not launch with placeholders visible.** |
 | `[LOOM_URL]`, `[GITHUB_URL]` | Proof section + footer | Your Loom demo and GitHub links. |
-| `https://firstreply.example` | Canonical, og:url, JSON-LD | Your real domain. |
+| `https://firstreply.dev` | Canonical, og:url, JSON-LD | Your real domain. |
 | `[CONTACT_EMAIL]`, `[DATE]` | privacy.html | Your contact email; today's date. |
 
 ## 2. Connect the form to n8n (click-by-click)
