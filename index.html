@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<!--
+═══════════════════════════════════════════════════════════════════════════
+  FIRSTREPLY — one-page site. Built as a single static file, no build step.
+  Deploy to GitHub Pages / Cloudflare Pages / Netlify / any static host.
+
+  ── SECURITY HEADERS TO SET AT THE HOST/CDN (Expert 3) ────────────────────
+  These CANNOT be set via <meta> and must be configured at the server/CDN
+  (Cloudflare "Transform Rules", Netlify _headers file, etc.).
+  GitHub Pages cannot set custom headers — if you stay on GitHub Pages,
+  put Cloudflare (free tier) in front of it to add these:
+
+    X-Content-Type-Options: nosniff
+    Referrer-Policy: strict-origin-when-cross-origin
+    Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+    X-Frame-Options: DENY
+    Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+      (HSTS note: only enable once HTTPS is confirmed working on the final
+       domain — it is effectively irreversible for the max-age period.)
+    Content-Security-Policy: (copy the meta CSP below, and ADD
+       "frame-ancestors 'none'" — that directive is ignored in meta tags.)
+
+  ── REPLACE BEFORE LAUNCH ─────────────────────────────────────────────────
+    1. YOUR-N8N-DOMAIN.example        → your n8n instance domain (CSP + JS CONFIG)
+    2. CALENDLY_URL in JS CONFIG      → your real Calendly/Cal.com event link
+       (if Cal.com: also swap calendly.com → cal.com in the CSP frame-src)
+    3. 44XXXXXXXXXX                   → WhatsApp number, international format
+    4. [X] / [MONTHS] in case study   → real Diji Catering numbers
+    5. LOOM_URL placeholder           → your Loom demo link
+    6. https://firstreply.example     → your real domain (canonical + JSON-LD)
+    7. GITHUB_URL placeholder         → your GitHub profile/repo links
+═══════════════════════════════════════════════════════════════════════════
+-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!--
+  CSP (Expert 3). Documented exceptions:
+  · script-src / style-src 'unsafe-inline' — unavoidable consequence of the
+    single-file, no-build-step architecture (Expert 2's constraint). Hash-based
+    CSP was rejected: any copy edit would silently break the page for a
+    non-developer maintainer. Mitigation: default-src 'none' blocks every
+    external fetch, so injected script has nowhere to exfiltrate to except
+    the two whitelisted origins below.
+  · connect-src is locked to the n8n webhook origin — the form CANNOT post
+    anywhere else, and will not post at all until you replace the placeholder.
+  · frame-src is locked to Calendly, which is only loaded click-to-activate.
+-->
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src 'self' data:; connect-src https://YOUR-N8N-DOMAIN.example; frame-src https://calendly.com; form-action 'self'; base-uri 'none'; upgrade-insecure-requests">
+
+<title>AI Automation Agency London | Firstreply — Speed to Lead</title>
+<meta name="description" content="London AI automation agency for education, catering &amp; events businesses: fix Meta ad tracking and answer every lead in under 60 seconds. GDPR-first.">
+<link rel="canonical" href="https://firstreply.example/">
+<meta name="theme-color" content="#0B1522">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Firstreply — every lead answered in under 60 seconds">
+<meta property="og:description" content="AI automation for marketing. Traceable ad spend, 60-second lead response, human-approved AI. London, UK.">
+<meta property="og:url" content="https://firstreply.example/">
+<meta property="og:locale" content="en_GB">
+<!-- TODO: add an og:image (1200×630) before sharing on socials -->
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230B1522'/%3E%3Cpath d='M9 23V9h14v4h-9v3h8v4h-8v3z' fill='%23FFB224'/%3E%3C/svg%3E">
+
+<!-- Structured data: LocalBusiness (ProfessionalService) + Services + FAQ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://firstreply.example/#business",
+      "name": "Firstreply",
+      "description": "AI automation agency in London. Meta Conversions API tracking, 60-second speed-to-lead systems and Meta ads management for education, catering and hospitality & events businesses.",
+      "url": "https://firstreply.example/",
+      "areaServed": { "@type": "Country", "name": "United Kingdom" },
+      "address": { "@type": "PostalAddress", "addressLocality": "London", "addressCountry": "GB" },
+      "founder": {
+        "@type": "Person",
+        "name": "Golam Rabbani",
+        "jobTitle": "Founder",
+        "alumniOf": "University of Hertfordshire"
+      },
+      "knowsAbout": ["Meta Conversions API", "n8n automation", "GDPR compliance", "Lead response automation", "Meta ads management"],
+      "priceRange": "££"
+    },
+    {
+      "@type": "Service",
+      "name": "Tracking Fix — Meta Conversions API setup",
+      "provider": { "@id": "https://firstreply.example/#business" },
+      "areaServed": "GB",
+      "description": "Server-side Meta Conversions API setup with event deduplication and GDPR-compliant consent handling.",
+      "offers": { "@type": "Offer", "priceCurrency": "GBP", "price": "800", "description": "£800–£1,200 one-off" }
+    },
+    {
+      "@type": "Service",
+      "name": "Speed-to-Lead System",
+      "provider": { "@id": "https://firstreply.example/#business" },
+      "areaServed": "GB",
+      "description": "Every lead captured instantly, AI-drafted reply within 60 seconds with human approval gates, WhatsApp owner alerts and automated follow-up.",
+      "offers": { "@type": "Offer", "priceCurrency": "GBP", "price": "1500", "description": "£1,500–£2,500 setup plus £250/month" }
+    },
+    {
+      "@type": "Service",
+      "name": "Full Growth Engine",
+      "provider": { "@id": "https://firstreply.example/#business" },
+      "areaServed": "GB",
+      "description": "Tracking, speed-to-lead, Meta ads management and automated reporting on a monthly retainer.",
+      "offers": { "@type": "Offer", "priceCurrency": "GBP", "price": "1000", "description": "£1,000–£2,000 per month retainer" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is my customer data safe?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every pipeline is built GDPR-by-design: data minimisation, consent-aware event flows, UK/EU data residency where available, and no customer data is ever sold or reused. Firstreply's founder holds an MSc in Computer Network & System Security, and a data processing agreement is available for every engagement." }
+        },
+        {
+          "@type": "Question",
+          "name": "Will AI message my customers without approval?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No — never. Every automation includes a human approval gate. The AI drafts the reply; a human approves it (one tap on WhatsApp) before anything is sent. You also approve every message template before the system goes live." }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does setup take?",
+          "acceptedAnswer": { "@type": "Answer", "text": "The Tracking Fix typically takes about a week. The Speed-to-Lead System takes one to two weeks including your approval of every message template. The Full Growth Engine ramps up over the first thirty days." }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need to change my website or buy new software?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. We build on top of what you already use — your existing website forms, Meta lead ads, email inbox and WhatsApp. Automations run on n8n, and you keep ownership of and access to everything we build." }
+        },
+        {
+          "@type": "Question",
+          "name": "Am I tied into a long contract?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. One-off builds have no contract at all. Monthly plans are rolling with thirty days' notice — no long contracts, ever. If the system stops paying for itself, you stop paying for the system." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+/* ═══════════ DESIGN TOKENS (Expert 4) ═══════════
+   Palette rationale: deep ink navy (security, engineering) + amber signal
+   (warmth, urgency — the "60 seconds" colour) + warm paper (approachable,
+   not clinical). Deliberately no purple gradient. All text pairings meet
+   WCAG 2.1 AA (amber is used only on dark backgrounds or as button fill
+   with ink text; on light backgrounds we shift to amber-800). */
+:root{
+  --ink:#0B1522;        /* hero / footer background */
+  --ink-2:#122236;      /* raised cards on dark */
+  --ink-3:#1B3049;      /* borders on dark */
+  --paper:#FAF8F4;      /* body background — warm, not grey */
+  --card:#FFFFFF;
+  --text:#22303F;       /* body text on paper — 12.4:1 */
+  --text-soft:#51606F;  /* secondary text — 6.2:1 */
+  --text-inv:#EAF0F6;   /* body text on ink — 13.9:1 */
+  --text-inv-soft:#9FB0C0; /* secondary on ink — 7.1:1 */
+  --amber:#FFB224;      /* CTAs, highlights on dark */
+  --amber-deep:#8A5A00; /* amber for text on light — 5.4:1 on paper */
+  --teal:#0F766E;       /* success / checkmarks on light — 5.2:1 */
+  --teal-bright:#2DD4BF;/* success on dark */
+  --line:#E5E0D8;
+  --maxw:1100px;
+  --radius:14px;
+  --shadow:0 1px 2px rgba(11,21,34,.06),0 8px 24px rgba(11,21,34,.07);
+}
+
+/* ═══════════ RESET & BASE ═══════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  background:var(--paper);color:var(--text);
+  font-size:1.0625rem;line-height:1.65;
+}
+img,svg{display:block;max-width:100%}
+a{color:var(--amber-deep)}
+:focus-visible{outline:3px solid var(--amber);outline-offset:3px;border-radius:4px}
+.skip-link{position:absolute;left:-9999px;top:0;background:var(--amber);color:var(--ink);padding:.75rem 1.25rem;z-index:100;font-weight:700;border-radius:0 0 8px 0}
+.skip-link:focus{left:0}
+.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:1.25rem}
+section{padding-block:4.5rem}
+@media(min-width:768px){section{padding-block:6rem}}
+h1,h2,h3{line-height:1.15;letter-spacing:-.02em;color:var(--ink);text-wrap:balance}
+h1{font-size:clamp(2.1rem,5.5vw,3.4rem);font-weight:800}
+h2{font-size:clamp(1.6rem,3.5vw,2.3rem);font-weight:800;margin-bottom:.75rem}
+h3{font-size:1.2rem;font-weight:700}
+.lead{font-size:clamp(1.05rem,2vw,1.25rem);color:var(--text-soft);max-width:46ch}
+.eyebrow{display:inline-block;font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--amber-deep);margin-bottom:.9rem}
+.dark .eyebrow{color:var(--amber)}
+.center{text-align:center}.center .lead{margin-inline:auto}
+
+/* ═══════════ BUTTONS — ≥48px targets, obvious states ═══════════ */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+  min-height:48px;padding:.85rem 1.75rem;border-radius:10px;border:2px solid transparent;
+  font-size:1.05rem;font-weight:700;text-decoration:none;cursor:pointer;
+  transition:transform .12s ease,box-shadow .12s ease,background .12s ease}
+.btn-primary{background:var(--amber);color:var(--ink)}
+.btn-primary:hover{background:#FFC14E;box-shadow:0 6px 20px rgba(255,178,36,.35);transform:translateY(-1px)}
+.btn-primary:active{transform:translateY(1px);box-shadow:none}
+.btn-ghost{background:transparent;color:var(--text-inv);border-color:var(--ink-3)}
+.btn-ghost:hover{border-color:var(--text-inv-soft);background:rgba(255,255,255,.05)}
+.btn-ghost-light{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn-ghost-light:hover{border-color:var(--text-soft)}
+.btn-note{font-size:.85rem;color:var(--text-inv-soft);margin-top:.6rem}
+
+/* ═══════════ HEADER ═══════════ */
+header{background:var(--ink)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding-block:1.1rem}
+.logo{font-weight:800;font-size:1.25rem;color:var(--text-inv);text-decoration:none;letter-spacing:-.02em;display:inline-flex;align-items:center;min-height:48px}
+.logo .tick{color:var(--amber)}
+.nav-links{display:none;gap:1.75rem;list-style:none}
+.nav-links a{color:var(--text-inv-soft);text-decoration:none;font-size:.95rem;font-weight:600;display:inline-flex;align-items:center;min-height:44px}
+.nav-links a:hover{color:var(--text-inv)}
+@media(min-width:768px){.nav-links{display:flex}}
+.nav .btn{min-height:44px;padding:.6rem 1.2rem;font-size:.95rem}
+
+/* ═══════════ HERO ═══════════ */
+.dark{background:var(--ink);color:var(--text-inv)}
+.dark h1,.dark h2,.dark h3{color:var(--text-inv)}
+.dark .lead{color:var(--text-inv-soft)}
+.hero{padding-block:3.5rem 4.5rem}
+@media(min-width:768px){.hero{padding-block:5rem 6rem}}
+.hero-grid{display:grid;gap:3rem}
+@media(min-width:960px){.hero-grid{grid-template-columns:1.05fr .95fr;align-items:center}}
+.trust-chips{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.75rem;list-style:none}
+.trust-chips li{display:inline-flex;align-items:center;gap:.4rem;font-size:.85rem;font-weight:600;
+  color:var(--text-inv-soft);border:1px solid var(--ink-3);border-radius:99px;padding:.4rem .85rem}
+.trust-chips svg{width:14px;height:14px;flex:none;color:var(--teal-bright)}
+
+/* ═══════════ SIGNATURE FLOW DIAGRAM (Expert 4) ═══════════
+   Pure CSS animation, 10s loop: each stage lights in sequence.
+   prefers-reduced-motion: all stages rendered lit, no animation. */
+.flow{background:var(--ink-2);border:1px solid var(--ink-3);border-radius:var(--radius);
+  padding:1.5rem;display:flex;flex-direction:column;gap:.35rem;position:relative}
+.flow-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:.9rem;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.78rem;color:var(--text-inv-soft)}
+.live{display:inline-flex;align-items:center;gap:.45rem;color:var(--teal-bright);font-weight:700}
+.live::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--teal-bright);
+  animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.flow-step{display:flex;align-items:center;gap:.9rem;padding:.7rem .85rem;border-radius:10px;
+  border:1px solid transparent;opacity:.45;animation:stage 10s infinite}
+.flow-step svg{width:22px;height:22px;flex:none;color:var(--text-inv-soft)}
+.flow-step b{display:block;font-size:.95rem;color:var(--text-inv)}
+.flow-step span{font-size:.8rem;color:var(--text-inv-soft)}
+.flow-step .t{margin-left:auto;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:.75rem;color:var(--text-inv-soft)}
+.flow-step:nth-child(2){animation-delay:0s}
+.flow-step:nth-child(3){animation-delay:1.8s}
+.flow-step:nth-child(4){animation-delay:3.6s}
+.flow-step:nth-child(5){animation-delay:5.4s}
+.flow-step:nth-child(6){animation-delay:7.2s}
+@keyframes stage{
+  0%{opacity:.45;border-color:transparent;background:transparent}
+  6%,24%{opacity:1;border-color:var(--amber);background:rgba(255,178,36,.08)}
+  32%,100%{opacity:.85;border-color:var(--ink-3);background:transparent}
+}
+.flow-step:nth-child(5) svg{color:var(--teal-bright)}
+.flow-arrow{width:2px;height:14px;background:var(--ink-3);margin-left:calc(.85rem + 11px)}
+.flow-foot{margin-top:.9rem;padding-top:.9rem;border-top:1px dashed var(--ink-3);
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.78rem;color:var(--amber);text-align:center}
+@media (prefers-reduced-motion:reduce){
+  .flow-step{opacity:1;border-color:var(--ink-3)}
+}
+
+/* ═══════════ PAIN CARDS ═══════════ */
+.cards{display:grid;gap:1.25rem;margin-top:2.5rem}
+@media(min-width:768px){.cards{grid-template-columns:repeat(3,1fr)}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:1.75rem;box-shadow:var(--shadow)}
+.card svg{width:28px;height:28px;color:var(--amber-deep);margin-bottom:1rem}
+.card h3{margin-bottom:.5rem}
+.card p{color:var(--text-soft);font-size:.98rem}
+
+/* ═══════════ PRICING STACK ═══════════ */
+.tiers{display:grid;gap:1.5rem;margin-top:2.75rem}
+@media(min-width:960px){.tiers{grid-template-columns:repeat(3,1fr);align-items:start}}
+.tier{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:2rem 1.75rem;box-shadow:var(--shadow);position:relative;display:flex;flex-direction:column;gap:1rem}
+.tier.popular{border:2px solid var(--amber);box-shadow:0 8px 32px rgba(255,178,36,.18)}
+.badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--amber);
+  color:var(--ink);font-size:.75rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;
+  padding:.25rem .9rem;border-radius:99px;white-space:nowrap}
+.tier .step-no{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.78rem;color:var(--amber-deep);font-weight:700}
+.price{font-size:1.6rem;font-weight:800;color:var(--ink);letter-spacing:-.02em}
+.price small{display:block;font-size:.85rem;font-weight:600;color:var(--text-soft)}
+.tier>p{color:var(--text-soft);font-size:.98rem}
+.tier details{border-top:1px solid var(--line);padding-top:1rem;margin-top:auto}
+.tier summary{cursor:pointer;font-weight:700;font-size:.95rem;color:var(--amber-deep);list-style:none;display:flex;align-items:center;gap:.5rem;min-height:44px}
+.tier summary::-webkit-details-marker{display:none}
+.tier summary::after{content:"+";font-size:1.3rem;margin-left:auto;transition:transform .2s}
+.tier details[open] summary::after{transform:rotate(45deg)}
+.tier details ul{list-style:none;margin-top:.75rem;display:grid;gap:.6rem}
+.tier details li{display:flex;gap:.6rem;font-size:.93rem;color:var(--text)}
+.tier details li svg{width:18px;height:18px;flex:none;color:var(--teal);margin-top:3px}
+
+/* ═══════════ PROOF ═══════════ */
+.case{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow);padding:2.25rem;margin-top:2.5rem;display:grid;gap:2rem}
+@media(min-width:768px){.case{grid-template-columns:1.2fr .8fr;padding:2.75rem}}
+.metric{display:grid;gap:.15rem;padding:1.1rem 0;border-top:1px solid var(--line)}
+.metric:first-child{border-top:0;padding-top:0}
+.metric b{font-size:1.9rem;font-weight:800;color:var(--ink);letter-spacing:-.02em}
+.metric b .arrow{color:var(--teal)}
+.metric span{font-size:.9rem;color:var(--text-soft)}
+.proof-links{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.5rem}
+
+/* ═══════════ STEPS ═══════════ */
+.steps{display:grid;gap:1.25rem;margin-top:2.5rem;counter-reset:step}
+@media(min-width:768px){.steps{grid-template-columns:repeat(3,1fr)}}
+.step{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:1.75rem;box-shadow:var(--shadow)}
+.step::before{counter-increment:step;content:"0" counter(step);
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:.85rem;font-weight:700;color:var(--amber-deep);display:block;margin-bottom:.75rem}
+.step p{color:var(--text-soft);font-size:.98rem;margin-top:.4rem}
+
+/* ═══════════ FOUNDER ═══════════ */
+.founder{display:grid;gap:2.5rem;align-items:center}
+@media(min-width:768px){.founder{grid-template-columns:auto 1fr}}
+.founder-badges{display:grid;gap:.7rem;margin-top:1.5rem;list-style:none}
+.founder-badges li{display:flex;gap:.7rem;align-items:flex-start;font-size:.98rem}
+.founder-badges svg{width:20px;height:20px;flex:none;color:var(--teal);margin-top:3px}
+
+/* ═══════════ SECURITY STRIP ═══════════ */
+.sec-grid{display:grid;gap:1.25rem;margin-top:2.5rem}
+@media(min-width:768px){.sec-grid{grid-template-columns:repeat(2,1fr)}}
+.sec-item{display:flex;gap:1rem;background:var(--ink-2);border:1px solid var(--ink-3);
+  border-radius:var(--radius);padding:1.5rem}
+.sec-item svg{width:24px;height:24px;flex:none;color:var(--amber);margin-top:2px}
+.sec-item b{display:block;margin-bottom:.25rem;color:var(--text-inv)}
+.sec-item p{font-size:.93rem;color:var(--text-inv-soft)}
+
+/* ═══════════ FAQ ═══════════ */
+.faq{max-width:760px;margin:2.5rem auto 0}
+.faq details{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  margin-bottom:.9rem;box-shadow:var(--shadow)}
+.faq summary{cursor:pointer;font-weight:700;padding:1.25rem 1.5rem;list-style:none;
+  display:flex;align-items:center;gap:1rem;min-height:48px;color:var(--ink)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-size:1.4rem;margin-left:auto;color:var(--amber-deep);transition:transform .2s;flex:none}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{padding:0 1.5rem 1.4rem;color:var(--text-soft)}
+
+/* ═══════════ BOOKING & FORM ═══════════ */
+.book-grid{display:grid;gap:2.5rem;margin-top:2.5rem}
+@media(min-width:960px){.book-grid{grid-template-columns:1fr 1fr}}
+.embed-shell{background:var(--ink-2);border:1px dashed var(--ink-3);border-radius:var(--radius);
+  min-height:420px;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:1rem;text-align:center;padding:2rem}
+.embed-shell p{color:var(--text-inv-soft);font-size:.9rem;max-width:36ch}
+.embed-shell iframe{width:100%;height:640px;border:0;border-radius:var(--radius)}
+form{display:grid;gap:1.1rem}
+label{font-weight:600;font-size:.93rem;display:grid;gap:.4rem;color:var(--text-inv)}
+input,textarea{font:inherit;padding:.8rem 1rem;border-radius:10px;border:1px solid var(--ink-3);
+  background:var(--ink-2);color:var(--text-inv);min-height:48px;width:100%}
+textarea{min-height:110px;resize:vertical}
+input:focus,textarea:focus{outline:3px solid var(--amber);outline-offset:1px;border-color:var(--amber)}
+/* Honeypot: visually removed, hidden from AT and tab order. Bots fill it; humans never see it. */
+.hp-field{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.form-status{font-size:.95rem;font-weight:600;min-height:1.5em}
+.form-status.ok{color:var(--teal-bright)}
+.form-status.err{color:#FCA5A5}
+.form-note{font-size:.8rem;color:var(--text-inv-soft)}
+.form-note a{color:var(--text-inv-soft)}
+
+/* ═══════════ FOOTER ═══════════ */
+footer{background:var(--ink);color:var(--text-inv-soft);padding-block:3rem;font-size:.9rem}
+.foot-grid{display:grid;gap:1.5rem}
+@media(min-width:768px){.foot-grid{grid-template-columns:1fr auto;align-items:center}}
+footer a{color:var(--text-inv-soft)}
+footer a:hover{color:var(--text-inv)}
+.foot-links{display:flex;flex-wrap:wrap;gap:1.25rem;list-style:none}
+.foot-links a{display:inline-flex;align-items:center;min-height:44px}
+/* Easter egg: engineer's status line */
+.statusline{margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid var(--ink-3);
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.78rem;color:var(--teal-bright)}
+.statusline .cursor{display:inline-block;width:8px;height:14px;background:var(--teal-bright);
+  vertical-align:-2px;animation:blink 1.1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+
+/* ═══════════ STICKY MOBILE CTA ═══════════ */
+.sticky-cta{position:fixed;bottom:0;left:0;right:0;z-index:50;display:flex;gap:.6rem;
+  padding:.75rem 1rem calc(.75rem + env(safe-area-inset-bottom));background:rgba(11,21,34,.96);
+  border-top:1px solid var(--ink-3);transform:translateY(110%);transition:transform .25s ease}
+.sticky-cta.show{transform:translateY(0)}
+.sticky-cta .btn-primary{flex:1}
+.sticky-cta .wa{min-width:48px;padding:.85rem}
+@media(min-width:768px){.sticky-cta{display:none}}
+body{padding-bottom:0}
+
+/* ═══════════ SCROLL REVEAL (JS adds .js; no-JS = everything visible) ═══════════ */
+.js .reveal{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease}
+.js .reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.js .reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top" aria-label="Firstreply — home">firstreply<span class="tick">_</span></a>
+    <nav aria-label="Main navigation">
+      <ul class="nav-links">
+        <li><a href="#system">The system</a></li>
+        <li><a href="#proof">Results</a></li>
+        <li><a href="#how">How it works</a></li>
+        <li><a href="#security">Security</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-primary" href="#book">Book your free audit</a>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ═══════════ HERO ═══════════ -->
+  <section class="dark hero" id="top" aria-labelledby="hero-h">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">AI automation for marketing · London, UK</p>
+        <h1 id="hero-h">You're paying for leads. Then losing them.</h1>
+        <p class="lead" style="margin-top:1.25rem">Firstreply makes every pound of ad spend traceable — and gets every enquiry a reply in under 60 seconds, automatically. Built for education, catering and events businesses running paid ads.</p>
+        <div style="margin-top:2rem">
+          <a class="btn btn-primary" href="#book">Book your free Lead Leak Audit</a>
+          <p class="btn-note">15 minutes · no obligation · we'll show you exactly where leads leak</p>
+        </div>
+        <ul class="trust-chips" aria-label="Trust points">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>GDPR-compliant by design</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>No long contracts</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>UK-based</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>AI never sends without approval</li>
+        </ul>
+      </div>
+
+      <!-- Signature visual: the product, animated. -->
+      <div class="flow" role="img" aria-label="Animated diagram of the Firstreply pipeline: a new lead arrives, is captured instantly, the AI drafts a reply, a human approves it with one tap, and the reply is sent — all in under 60 seconds.">
+        <div class="flow-head"><span>firstreply · pipeline</span><span class="live">LIVE</span></div>
+        <div class="flow-step">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/></svg>
+          <div><b>New lead enquires</b><span>Website form · Meta lead ad · 9:47 pm</span></div>
+          <span class="t">00:00</span>
+        </div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5 5h14l3 7v7H2v-7z"/></svg>
+          <div><b>Captured instantly</b><span>Into one pipeline — nothing sits in an inbox</span></div>
+          <span class="t">00:02</span>
+        </div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3v3M8 21h8M12 17v4"/><rect x="4" y="6" width="16" height="11" rx="3"/><circle cx="9" cy="11.5" r="1.2" fill="currentColor" stroke="none"/><circle cx="15" cy="11.5" r="1.2" fill="currentColor" stroke="none"/></svg>
+          <div><b>AI drafts the reply</b><span>Your tone, their question — ready in seconds</span></div>
+          <span class="t">00:15</span>
+        </div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+          <div><b>You approve — one tap</b><span>WhatsApp alert · nothing sends without you</span></div>
+          <span class="t">00:41</span>
+        </div>
+        <div class="flow-arrow" aria-hidden="true"></div>
+        <div class="flow-step">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg>
+          <div><b>Reply sent</b><span>Lead answered while competitors sleep</span></div>
+          <span class="t">00:58</span>
+        </div>
+        <div class="flow-foot">⏱ enquiry → reply: under 60 seconds</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ PAIN / COST ═══════════ -->
+  <section id="pain" aria-labelledby="pain-h">
+    <div class="wrap">
+      <div class="reveal">
+        <p class="eyebrow">The problem</p>
+        <h2 id="pain-h">Leads go cold in minutes. Most businesses reply in hours.</h2>
+        <p class="lead">Someone fills in your form at 9pm. They hear back at 11am — after they've already booked your competitor. Research on lead response has shown the same thing for years: the odds of ever reaching an enquiry collapse within the first hour. And that's only half the leak.</p>
+      </div>
+      <div class="cards">
+        <article class="card reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/><path d="M11 8v3l2 2"/></svg>
+          <h3>The tracking hole</h3>
+          <p>Since iOS 14, the Meta pixel misses a chunk of your conversions. Meta then optimises your spend on incomplete data — so you pay more for worse leads and can't prove which ads actually work.</p>
+        </article>
+        <article class="card reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          <h3>The response gap</h3>
+          <p>Enquiries land at evenings and weekends — exactly when nobody's watching the inbox. Every hour of silence is money you already spent, walking off to whoever replied first.</p>
+        </article>
+        <article class="card reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg>
+          <h3>The follow-up fade</h3>
+          <p>No reply doesn't mean no interest. Most enquiries need two or three polite nudges before they book — and almost nobody sends them consistently. So the lead just… fades.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ THE SYSTEM (3 TIERS) ═══════════ -->
+  <section id="system" aria-labelledby="system-h" style="background:#F2EEE7">
+    <div class="wrap">
+      <div class="center reveal">
+        <p class="eyebrow">The system</p>
+        <h2 id="system-h">Three fixes. Stack them as you grow.</h2>
+        <p class="lead">Start by fixing your tracking, add 60-second lead response, or hand us the whole engine. Every tier is GDPR-by-design and you own everything we build.</p>
+      </div>
+      <div class="tiers">
+        <article class="tier reveal" aria-labelledby="t1-h">
+          <span class="step-no">TIER 1 · START HERE</span>
+          <h3 id="t1-h">Tracking Fix</h3>
+          <p class="price">£800–£1,200 <small>one-off, no ongoing fees</small></p>
+          <p>Your Meta ads are optimising on incomplete data. We fix the pipe — server-side, consent-aware, deduplicated — so every pound of spend becomes traceable.</p>
+          <details>
+            <summary>What's included</summary>
+            <ul>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Meta Conversions API set up server-side — not just the pixel</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Event deduplication so conversions aren't double-counted</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>GDPR-compliant, consent-aware event flow</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Before/after event match quality report</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Full handover documentation — you own it all</li>
+            </ul>
+          </details>
+          <a class="btn btn-ghost-light" href="#book">Fix my tracking</a>
+        </article>
+
+        <article class="tier popular reveal" aria-labelledby="t2-h">
+          <span class="badge">Most popular</span>
+          <span class="step-no">TIER 2 · THE CORE PRODUCT</span>
+          <h3 id="t2-h">Speed-to-Lead System</h3>
+          <p class="price">£1,500–£2,500 <small>setup, then £250/month</small></p>
+          <p>Every enquiry answered in under 60 seconds — drafted by AI, approved by you with one tap on WhatsApp, followed up automatically until they answer.</p>
+          <details>
+            <summary>What's included</summary>
+            <ul>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Every lead source captured into one pipeline — forms, Meta lead ads, email</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>AI-drafted reply in your tone within 60 seconds</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Human approval gate — you tap ✓ before anything sends</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Instant owner alerts on WhatsApp</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Automated polite follow-ups until they answer</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Monthly monitoring, tweaks and support</li>
+            </ul>
+          </details>
+          <a class="btn btn-primary" href="#book">Stop losing leads</a>
+        </article>
+
+        <article class="tier reveal" aria-labelledby="t3-h">
+          <span class="step-no">TIER 3 · HANDS-OFF</span>
+          <h3 id="t3-h">Full Growth Engine</h3>
+          <p class="price">£1,000–£2,000<small>per month, rolling — 30 days' notice</small></p>
+          <p>Tracking, speed-to-lead, Meta ads management and automated reporting — one system, one monthly number, aimed at booked business rather than clicks.</p>
+          <details>
+            <summary>What's included</summary>
+            <ul>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Everything in Tracking Fix + Speed-to-Lead</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Meta ads managed towards enquiries and bookings, not clicks</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Automated weekly report: spend → leads → replies → bookings</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Quarterly strategy review</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>No long contracts — rolling monthly</li>
+            </ul>
+          </details>
+          <a class="btn btn-ghost-light" href="#book">Run the engine</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ PROOF ═══════════ -->
+  <section id="proof" aria-labelledby="proof-h">
+    <div class="wrap">
+      <div class="reveal">
+        <p class="eyebrow">Proof, not promises</p>
+        <h2 id="proof-h">Live with a real London business right now.</h2>
+        <p class="lead">Diji Catering — a London catering company running paid ads — runs its enquiry pipeline on Firstreply. No cherry-picked screenshots; the numbers below are from the live system.</p>
+      </div>
+      <div class="case reveal">
+        <div>
+          <h3>Case study: Diji Catering</h3>
+          <p style="color:var(--text-soft);margin-top:.75rem">Enquiries used to arrive by form and email, then wait for someone to spot them between events. Now every enquiry is captured the second it lands, an AI-drafted reply goes out within a minute of approval, and the owner gets a WhatsApp alert — even for enquiries that arrive mid-service on a Saturday night.</p>
+          <div class="proof-links">
+            <a class="btn btn-ghost-light" href="[LOOM_URL]" rel="noopener">▶ Watch the 3-minute demo</a>
+            <a class="btn btn-ghost-light" href="[GITHUB_URL]" rel="noopener">See the code on GitHub</a>
+          </div>
+          <p style="font-size:.85rem;color:var(--text-soft);margin-top:1rem">GitHub: Meta CAPI integration &amp; GDPR-compliant n8n lead pipeline — the actual building blocks, in public.</p>
+        </div>
+        <div>
+          <div class="metric"><b>4 hrs <span class="arrow">→</span> 60 sec</b><span>average first-response time, before → after</span></div>
+          <div class="metric"><b>[X]</b><span>enquiries captured in [MONTHS] — none missed</span></div>
+          <div class="metric"><b>100%</b><span>of replies human-approved before sending</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ HOW IT WORKS ═══════════ -->
+  <section id="how" aria-labelledby="how-h" style="background:#F2EEE7">
+    <div class="wrap">
+      <div class="center reveal">
+        <p class="eyebrow">How it works</p>
+        <h2 id="how-h">From leaky funnel to 60-second replies in two weeks.</h2>
+      </div>
+      <div class="steps">
+        <article class="step reveal">
+          <h3>Book your Lead Leak Audit</h3>
+          <p>A free 15-minute call. We look at your ads, forms and inbox together and show you exactly where enquiries are leaking — and what each leak is costing you. No pitch deck, no obligation.</p>
+        </article>
+        <article class="step reveal">
+          <h3>We build your pipeline</h3>
+          <p>Over one to two weeks we set up your tracking and automations around the tools you already use. You approve every message template before anything goes live. Nothing changes on your website.</p>
+        </article>
+        <article class="step reveal">
+          <h3>You reply first, every time</h3>
+          <p>Enquiries get answered in under 60 seconds, follow-ups go out on schedule, and a weekly report shows spend → leads → replies → bookings. You just tap ✓ to approve.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ FOUNDER ═══════════ -->
+  <section id="founder" aria-labelledby="founder-h">
+    <div class="wrap founder">
+      <div class="reveal" aria-hidden="true">
+        <!-- Placeholder monogram — swap for a real photo (set explicit width/height + alt) -->
+        <svg width="180" height="180" viewBox="0 0 180 180" role="img" aria-label="Golam Rabbani, founder of Firstreply">
+          <rect width="180" height="180" rx="24" fill="#0B1522"/>
+          <text x="90" y="108" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="52" font-weight="700" fill="#FFB224">GR</text>
+        </svg>
+      </div>
+      <div class="reveal">
+        <p class="eyebrow">Who's behind this</p>
+        <h2 id="founder-h">Built by a security engineer who did the marketing job first.</h2>
+        <p class="lead" style="margin-top:1rem">I'm Golam Rabbani. I spent years as a Digital Marketing Manager watching good leads die in inboxes — then took an MSc in Computer Network &amp; System Security to learn how to build systems properly. Firstreply is both halves: marketing that converts, engineered by someone trained to protect your data.</p>
+        <ul class="founder-badges">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2 3 6v6c0 5 3.8 8.6 9 10 5.2-1.4 9-5 9-10V6z"/><path d="m9 12 2 2 4-4"/></svg><span><strong>MSc Computer Network &amp; System Security</strong> — University of Hertfordshire</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 3v18h18"/><path d="m7 14 4-4 4 3 5-6"/></svg><span><strong>Ex-Digital Marketing Manager</strong> — I've run the campaigns, not just the code</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M13 5l-2 14"/></svg><span><strong>n8n &amp; Python automation specialist</strong> — pipelines you can inspect on GitHub</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ SECURITY & COMPLIANCE (a selling point) ═══════════ -->
+  <section id="security" class="dark" aria-labelledby="sec-h">
+    <div class="wrap">
+      <div class="center reveal">
+        <p class="eyebrow">Security &amp; compliance</p>
+        <h2 id="sec-h">Your customers' data, treated like it matters.</h2>
+        <p class="lead">Most agencies bolt automation onto your data and hope. Ours is designed by a security postgraduate, so compliance isn't an afterthought — it's the architecture.</p>
+      </div>
+      <div class="sec-grid">
+        <div class="sec-item reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2 3 6v6c0 5 3.8 8.6 9 10 5.2-1.4 9-5 9-10V6z"/><path d="m9 12 2 2 4-4"/></svg>
+          <div><b>GDPR by design</b><p>Data minimisation, lawful-basis mapping and consent-aware pipelines from day one. A data processing agreement is available for every engagement.</p></div>
+        </div>
+        <div class="sec-item reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+          <div><b>Human-in-the-loop, always</b><p>AI drafts; a human approves. No message reaches your customer without a sign-off. Approval gates are built into the workflow, not promised in a slide.</p></div>
+        </div>
+        <div class="sec-item reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <div><b>Least-privilege access</b><p>We request only the access each workflow needs, credentials are stored encrypted, and access is revoked at handover. You keep the keys to your own systems.</p></div>
+        </div>
+        <div class="sec-item reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="9"/></svg>
+          <div><b>UK/EU data residency</b><p>Wherever the stack allows, data stays in UK/EU regions. Your customer records are never sold, shared or used to train anything.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ FAQ ═══════════ -->
+  <section id="faq" aria-labelledby="faq-h">
+    <div class="wrap">
+      <div class="center reveal">
+        <p class="eyebrow">Questions, answered straight</p>
+        <h2 id="faq-h">Frequently asked questions</h2>
+      </div>
+      <div class="faq reveal">
+        <details>
+          <summary>Is my customer data safe?</summary>
+          <p>Yes. Every pipeline is built GDPR-by-design: data minimisation, consent-aware event flows, UK/EU data residency where available, and your customer data is never sold or reused for anything else. The founder holds an MSc in Computer Network &amp; System Security, and a data processing agreement is available for every engagement.</p>
+        </details>
+        <details>
+          <summary>Will AI message my customers without approval?</summary>
+          <p>No — never. Every automation includes a human approval gate. The AI drafts the reply; a human (you, or us on the Growth Engine) approves it with one tap before anything sends. You also sign off every message template before the system goes live. This is a hard rule, not a setting.</p>
+        </details>
+        <details>
+          <summary>How long does setup take?</summary>
+          <p>The Tracking Fix typically takes about a week. The Speed-to-Lead System takes one to two weeks, including your approval of every message template. The Full Growth Engine ramps over the first thirty days. You'll see the first automated reply go out before we send our final invoice.</p>
+        </details>
+        <details>
+          <summary>Do I need to change my website or buy new software?</summary>
+          <p>No. We build on top of what you already have — your existing website forms, Meta lead ads, email inbox and WhatsApp. The automations run on n8n, and you keep ownership of and access to everything we build. If we ever part ways, the system stays yours.</p>
+        </details>
+        <details>
+          <summary>Am I tied into a long contract?</summary>
+          <p>No. One-off builds have no contract at all. Monthly plans are rolling with thirty days' notice — no long contracts, ever. If the system stops paying for itself, you stop paying for the system. That's the deal.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ FINAL CTA + BOOKING + FORM ═══════════ -->
+  <section id="book" class="dark" aria-labelledby="book-h">
+    <div class="wrap">
+      <div class="center reveal">
+        <p class="eyebrow">Free 15-minute call</p>
+        <h2 id="book-h">Stop paying for leads you never speak to.</h2>
+        <p class="lead">Book a free Lead Leak Audit. In 15 minutes we'll find where your enquiries are leaking, what it's costing you, and whether we can fix it. If we can't help, we'll say so on the call.</p>
+      </div>
+
+      <div class="book-grid">
+        <!-- Booking embed: CLICK-TO-ACTIVATE (Expert 3).
+             The Calendly iframe (third-party) loads only after explicit user
+             action — no third-party request happens on page load. This is also
+             where cookie-consent logic would extend: if you later add optional
+             analytics or marketing cookies, gate them behind the same pattern —
+             no cookie is set until the user acts. -->
+        <div>
+          <h3 style="margin-bottom:1rem">Pick a time</h3>
+          <div class="embed-shell" id="embedShell">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#FFB224" stroke-width="1.8" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            <button class="btn btn-primary" id="loadCal" type="button">Load booking calendar</button>
+            <p>Loads Calendly (a third-party service) only when you click — nothing is loaded or tracked until then. Prefer not to? <a href="[CALENDLY_URL]" rel="noopener" style="color:var(--amber)">Open the calendar in a new tab</a> or use the form.</p>
+          </div>
+        </div>
+
+        <!-- Fallback / low-commitment path -->
+        <div>
+          <h3 style="margin-bottom:1rem">Or send a message</h3>
+          <!-- Security: honeypot field + validation; posts JSON over HTTPS to
+               your n8n webhook (locked by CSP connect-src). Nothing is stored
+               client-side — no cookies, no localStorage. -->
+          <form id="leadForm" novalidate>
+            <label>Your name
+              <input type="text" name="name" autocomplete="name" required maxlength="100">
+            </label>
+            <label>Business name
+              <input type="text" name="business" autocomplete="organization" required maxlength="120">
+            </label>
+            <label>Email
+              <input type="email" name="email" autocomplete="email" required maxlength="150">
+            </label>
+            <label>What's your biggest lead headache? <span style="font-weight:400;color:var(--text-inv-soft)">(optional)</span>
+              <textarea name="message" maxlength="1000"></textarea>
+            </label>
+            <!-- Honeypot: hidden from humans and assistive tech; bots auto-fill it -->
+            <div class="hp-field" aria-hidden="true">
+              <label>Leave this field empty
+                <input type="text" name="company_website" tabindex="-1" autocomplete="off">
+              </label>
+            </div>
+            <button class="btn btn-primary" type="submit">Send — we reply within one working day</button>
+            <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+            <p class="form-note">Sent securely to our UK pipeline. Used only to reply to you — see our <a href="privacy.html">privacy policy</a>. No marketing list, no cookies.</p>
+          </form>
+        </div>
+      </div>
+
+      <p class="center" style="margin-top:2.5rem;color:var(--text-inv-soft)">
+        Prefer WhatsApp? <a href="https://wa.me/44XXXXXXXXXX" rel="noopener" style="color:var(--amber);font-weight:700;display:inline-flex;align-items:center;min-height:48px;padding-inline:.5rem">Message us directly →</a>
+      </p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <p style="color:var(--text-inv);font-weight:800;font-size:1.1rem">firstreply<span style="color:var(--amber)">_</span></p>
+        <p style="margin-top:.5rem">AI automation for marketing · London, UK · Founded by Golam Rabbani</p>
+      </div>
+      <ul class="foot-links">
+        <li><a href="privacy.html">Privacy policy</a></li>
+        <li><a href="[GITHUB_URL]" rel="noopener">GitHub</a></li>
+        <li><a href="https://wa.me/44XXXXXXXXXX" rel="noopener">WhatsApp</a></li>
+        <li><a href="#book">Book a call</a></li>
+      </ul>
+    </div>
+    <!-- Easter egg: the engineer's status line -->
+    <p class="statusline" aria-hidden="true">$ firstreply --status<br>system status: all workflows operational ✓ · human approval gates: enforced · monitored from London <span class="cursor"></span></p>
+    <p style="margin-top:1rem;font-size:.8rem">© <span id="year">2026</span> Firstreply. No cookies were set during your visit.</p>
+  </div>
+</footer>
+
+<!-- Sticky mobile CTA (appears after scrolling past the hero) -->
+<div class="sticky-cta" id="stickyCta" aria-hidden="true">
+  <a class="btn btn-primary" href="#book" tabindex="-1">Book your free Lead Leak Audit</a>
+  <a class="btn btn-ghost wa" href="https://wa.me/44XXXXXXXXXX" rel="noopener" aria-label="Chat on WhatsApp" tabindex="-1">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-9.2 8.4 8.6 8.6 0 0 1-3.3-.8L3 21l1.9-5.3a8.4 8.4 0 1 1 16.1-4.2z"/></svg>
+  </a>
+</div>
+
+<!--
+  ANALYTICS SLOT (Expert 2/3): cookieless option, disabled by default.
+  Plausible sets no cookies and stores no personal data, so under UK GDPR /
+  PECR it can run without a consent banner. To enable:
+    1. Uncomment the script below and set your domain.
+    2. Add https://plausible.io to script-src AND connect-src in the CSP meta
+       tag above (and in your server CSP header).
+  <script defer data-domain="firstreply.example" src="https://plausible.io/js/script.js"></script>
+-->
+
+<script>
+'use strict';
+/* ═══════ CONFIG — replace before launch ═══════ */
+var CONFIG = {
+  // n8n webhook (must match the CSP connect-src origin above)
+  WEBHOOK_URL: 'https://YOUR-N8N-DOMAIN.example/webhook/firstreply-lead',
+  // Calendly event link (if using Cal.com, also change CSP frame-src)
+  CALENDLY_URL: '[CALENDLY_URL]'
+};
+
+/* Progressive enhancement flag: reveal animations only apply when JS runs */
+document.documentElement.classList.add('js');
+document.getElementById('year').textContent = String(new Date().getFullYear());
+
+/* ═══════ Scroll reveal — IntersectionObserver only, honours reduced motion ═══════ */
+var motionOK = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if ('IntersectionObserver' in window && motionOK) {
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+} else {
+  document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
+}
+
+/* ═══════ Sticky mobile CTA — passive listener, shown after the hero ═══════ */
+var sticky = document.getElementById('stickyCta');
+var bookSection = document.getElementById('book');
+function updateSticky() {
+  var pastHero = window.scrollY > 640;
+  var nearBook = bookSection.getBoundingClientRect().top < window.innerHeight;
+  var show = pastHero && !nearBook;
+  sticky.classList.toggle('show', show);
+  sticky.setAttribute('aria-hidden', String(!show));
+  sticky.querySelectorAll('a').forEach(function (a) { a.tabIndex = show ? 0 : -1; });
+}
+window.addEventListener('scroll', updateSticky, { passive: true });
+updateSticky();
+
+/* ═══════ Click-to-activate Calendly (no third-party load until consented) ═══════ */
+document.getElementById('loadCal').addEventListener('click', function () {
+  var shell = document.getElementById('embedShell');
+  if (CONFIG.CALENDLY_URL.indexOf('[') === 0) {
+    shell.insertAdjacentHTML('beforeend',
+      '<p style="color:#FCA5A5;font-weight:700">Owner: set CONFIG.CALENDLY_URL in the script block first.</p>');
+    return;
+  }
+  var iframe = document.createElement('iframe');
+  iframe.src = CONFIG.CALENDLY_URL + '?hide_gdpr_banner=1&background_color=122236&text_color=EAF0F6&primary_color=FFB224';
+  iframe.title = 'Book your free Lead Leak Audit — booking calendar';
+  iframe.loading = 'lazy';
+  iframe.width = '100%'; iframe.height = '640'; // explicit size → no CLS
+  shell.replaceChildren(iframe);
+});
+
+/* ═══════ Lead form: honeypot + validation + HTTPS POST to n8n ═══════
+   Privacy: nothing is persisted client-side. No cookies, no storage.   */
+var form = document.getElementById('leadForm');
+var statusEl = document.getElementById('formStatus');
+form.addEventListener('submit', function (ev) {
+  ev.preventDefault();
+  statusEl.className = 'form-status';
+
+  // Honeypot: silently drop bot submissions (pretend success)
+  if (form.elements.company_website.value !== '') {
+    statusEl.textContent = 'Thanks — we’ll be in touch.';
+    statusEl.classList.add('ok');
+    return;
+  }
+  // Validation
+  var name = form.elements.name.value.trim();
+  var business = form.elements.business.value.trim();
+  var email = form.elements.email.value.trim();
+  if (!name || !business || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+    statusEl.textContent = 'Please fill in your name, business and a valid email.';
+    statusEl.classList.add('err');
+    return;
+  }
+  if (CONFIG.WEBHOOK_URL.indexOf('YOUR-N8N-DOMAIN') !== -1) {
+    statusEl.textContent = 'Form not connected yet — owner: set CONFIG.WEBHOOK_URL and the CSP connect-src.';
+    statusEl.classList.add('err');
+    return;
+  }
+
+  var btn = form.querySelector('button[type=submit]');
+  btn.disabled = true;
+  statusEl.textContent = 'Sending…';
+
+  fetch(CONFIG.WEBHOOK_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      name: name, business: business, email: email,
+      message: form.elements.message.value.trim().slice(0, 1000),
+      source: 'firstreply-site', ts: new Date().toISOString()
+    })
+  }).then(function (res) {
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    form.reset();
+    statusEl.textContent = 'Sent ✓ We’ll reply within one working day.';
+    statusEl.classList.add('ok');
+  }).catch(function () {
+    statusEl.textContent = 'Something went wrong. Email us or use WhatsApp below.';
+    statusEl.classList.add('err');
+  }).finally(function () { btn.disabled = false; });
+});
+
+/* ═══════ Easter egg for fellow engineers ═══════ */
+console.log('%cfirstreply_ %c$ whoami\nBuilt in vanilla HTML/CSS/JS by an automation engineer.\nNo frameworks were harmed. Pipeline status: operational ✓',
+  'color:#FFB224;font-weight:bold', 'color:#2DD4BF');
+</script>
+</body>
+</html>
