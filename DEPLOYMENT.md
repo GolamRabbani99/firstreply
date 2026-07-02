@@ -24,14 +24,13 @@ Files: `index.html` (the site), `privacy.html` (linked from footer + form). No b
 6. In n8n, restrict the webhook: check the `source` field equals `firstreply-site`, rate-limit if your instance is public, and never echo submitted data back in the response.
 7. Test: submit the form → you should see "Sent ✓". Check the n8n execution log.
 
-## 3. Security headers (server/CDN level)
+## 3. Security headers — handled by Vercel
 
-GitHub Pages **cannot** set custom headers. Two options:
+The site deploys on **Vercel** (GitHub repo `GolamRabbani99/firstreply`, connected via the Vercel dashboard). `vercel.json` in the repo root sets every security header automatically on each deploy: CSP (with `frame-ancestors 'none'`), X-Content-Type-Options, Referrer-Policy, Permissions-Policy, X-Frame-Options and HSTS. Nothing to configure by hand.
 
-- **Option A (recommended): Cloudflare free tier in front of GitHub Pages** — Rules → Transform Rules → Modify Response Header, add the headers from the comment block at the top of `index.html` (X-Content-Type-Options, Referrer-Policy, Permissions-Policy, X-Frame-Options, CSP with `frame-ancestors 'none'`, and HSTS **only after HTTPS is confirmed working**).
-- **Option B: Netlify/Cloudflare Pages** — create a `_headers` file with the same list.
+**Important:** when you set your real n8n domain (step 1), update it in **both** `index.html` (CSP meta + `CONFIG.WEBHOOK_URL`) **and** `vercel.json` (`connect-src`) — then push, and Vercel redeploys automatically.
 
-The CSP meta tag in the HTML works everywhere as a baseline, so the site is protected even on plain GitHub Pages.
+To update the live site after any edit: commit and push to `main`. Vercel rebuilds in under a minute.
 
 ## 4. Lighthouse test
 
