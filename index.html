@@ -311,9 +311,9 @@ header{background:var(--ink)}
    Progressive enhancement: JS registers --sec via CSS.registerProperty and
    adds .timerok; browsers without support simply never show the timer. */
 @keyframes count{from{--sec:0}to{--sec:59}}
-.tick{display:none;color:var(--amber);font-weight:700}
-.timerok .tick{display:inline-block;min-width:4.5ch;animation:count 10s linear infinite}
-.timerok .tick::after{counter-reset:s var(--sec);content:"00:" counter(s,decimal-leading-zero)}
+.stopwatch{display:none;color:var(--amber);font-weight:700}
+.timerok .stopwatch{display:inline-block;min-width:4.5ch;animation:count 10s linear infinite}
+.timerok .stopwatch::after{counter-reset:s var(--sec);content:"00:" counter(s,decimal-leading-zero)}
 
 /* soft radar pulse on the primary CTA */
 .cta-pulse{animation:ring 3.2s ease-out infinite}
@@ -508,7 +508,7 @@ body{padding-bottom:0}
 
       <!-- Signature visual: the product, animated. -->
       <div class="flow" role="img" aria-label="Animated diagram of the Firstreply pipeline: a new lead arrives, is captured instantly, the AI drafts a reply, a human approves it with one tap, and the reply is sent — all in under 60 seconds.">
-        <div class="flow-head"><span class="fh"><svg class="gear" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.6 4.6l2.1 2.1M17.3 17.3l2.1 2.1M19.4 4.6l-2.1 2.1M6.7 17.3l-2.1 2.1"/></svg>firstreply · pipeline</span><span class="fh"><b class="tick" aria-hidden="true"></b><span class="live">LIVE</span></span></div>
+        <div class="flow-head"><span class="fh"><svg class="gear" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.6 4.6l2.1 2.1M17.3 17.3l2.1 2.1M19.4 4.6l-2.1 2.1M6.7 17.3l-2.1 2.1"/></svg>firstreply · pipeline</span><span class="fh"><b class="stopwatch" aria-hidden="true"></b><span class="live">LIVE</span></span></div>
         <div class="flow-step">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/></svg>
           <div><b>New lead enquires</b><span>Website form · Meta lead ad · 9:47 pm</span></div>
