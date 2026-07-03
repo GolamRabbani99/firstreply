@@ -1,6 +1,6 @@
 # Firstreply
 
-> AI automation agency in London, UK. We make every pound of ad spend traceable and get every lead a human-approved reply in under 60 seconds — built for education, catering and hospitality & events businesses running paid ads.
+> AI automation agency based in London, UK, working remotely with clients worldwide. We make every pound of ad spend traceable and get every lead a human-approved reply in under 60 seconds — built for education, catering and hospitality & events businesses running paid ads.
 
 ## Services
 
@@ -13,6 +13,7 @@
 - Founder: Golam Rabbani — MSc Computer Network & System Security (University of Hertfordshire), ex-Digital Marketing Manager with 5+ years of Facebook/Meta ads experience, n8n and Python automation specialist
 - AI never messages customers without human approval — approval gates are built into every workflow
 - GDPR-by-design pipelines; data processing agreement available; no long contracts
+- Fully remote delivery — clients can be anywhere; calls over video, systems in the cloud
 - Primary offer: free 15-minute "Lead Leak Audit" call
 
 ## Pages
