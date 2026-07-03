@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--
 ═══════════════════════════════════════════════════════════════════════════
   FIRSTREPLY — one-page site. Built as a single static file, no build step.
@@ -35,8 +37,6 @@
     7. GitHub link                    → ✓ done (github.com/GolamRabbani99)
 ═══════════════════════════════════════════════════════════════════════════
 -->
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!--
   CSP (Expert 3). Documented exceptions:
@@ -64,7 +64,7 @@
 <meta property="og:locale" content="en_GB">
 <!-- TODO: add an og:image (1200×630) before sharing on socials -->
 
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230B1522'/%3E%3Cpath d='M9 23V9h14v4h-9v3h8v4h-8v3z' fill='%23FFB224'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%230B1522'/%3E%3Cpath%20d='M9%2023V9h14v4h-9v3h8v4h-8v3z'%20fill='%23FFB224'/%3E%3C/svg%3E">
 
 <!-- Structured data: LocalBusiness (ProfessionalService) + Services + FAQ -->
 <script type="application/ld+json">
@@ -282,7 +282,7 @@ header{background:var(--ink)}
    prefers-reduced-motion. */
 .hero{position:relative;overflow:hidden}
 .hero .wrap{position:relative;z-index:1}
-.wires{position:absolute;inset:0;width:100%;height:100%;opacity:.45;pointer-events:none}
+.wires{position:absolute;top:0;left:0;width:100%;height:100%;opacity:.45;pointer-events:none}
 .wires path{fill:none;stroke:var(--ink-3);stroke-width:1.5}
 .wires .node{fill:var(--ink-3);animation:nodeGlow 4s ease-in-out infinite}
 .wires .node:nth-of-type(odd){animation-delay:2s}
@@ -346,8 +346,10 @@ header{background:var(--ink)}
   2%,10%{opacity:1;border-color:var(--amber);background:rgba(255,178,36,.08)}
   15%,100%{opacity:.8;border-color:var(--ink-3);background:transparent}
 }
-.jcap{position:relative;min-height:1.7em;margin-top:1.4rem;text-align:center;font-size:.93rem;color:var(--text-inv-soft)}
-.jcap span{position:absolute;inset:0;opacity:0}
+/* grid-stack crossfade: all captions share one cell, so the box is always
+   as tall as the longest caption — no overlap when text wraps on mobile */
+.jcap{display:grid;margin-top:1.4rem;text-align:center;font-size:.93rem;color:var(--text-inv-soft)}
+.jcap span{grid-area:1/1;opacity:0}
 .jcap span:nth-child(1){animation:jcap1 16s infinite}
 .jcap span:nth-child(2){animation:jcap2 16s infinite}
 .jcap span:nth-child(3){animation:jcap3 16s infinite}
@@ -359,8 +361,8 @@ header{background:var(--ink)}
 @keyframes jfill{to{transform:scaleX(1)}}
 @media (prefers-reduced-motion:reduce){
   .jstep{opacity:1;border-color:var(--ink-3)}
-  .jcap span{position:static;display:block;opacity:1}
-  .jcap{min-height:0}
+  .jcap{display:block}
+  .jcap span{display:block;opacity:1}
   .jprog{display:none}
 }
 
@@ -385,7 +387,7 @@ header{background:var(--ink)}
 @keyframes msgin{to{opacity:1;transform:none}}
 .demo.playing .tapme{animation:msgin .45s ease forwards,tapok .6s ease 5.5s}
 @keyframes tapok{0%,100%{transform:scale(1);box-shadow:none}50%{transform:scale(1.12);box-shadow:0 0 0 7px rgba(45,212,191,.25)}}
-.demo-poster{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;gap:1rem;align-items:center;justify-content:center;background:rgba(7,12,16,.85);border-radius:var(--radius);border:0;cursor:pointer;color:var(--text-inv);font:inherit;padding:1rem;text-align:center}
+.demo-poster{position:absolute;top:0;right:0;bottom:0;left:0;z-index:2;display:flex;flex-direction:column;gap:1rem;align-items:center;justify-content:center;background:rgba(7,12,16,.85);border-radius:var(--radius);border:0;cursor:pointer;color:var(--text-inv);font:inherit;padding:1rem;text-align:center}
 .demo-poster .play-circle{width:64px;height:64px;border-radius:50%;background:var(--amber);display:flex;align-items:center;justify-content:center;animation:ring 3.2s ease-out infinite}
 .demo-poster .play-circle svg{width:26px;height:26px;color:var(--ink);margin-left:3px}
 .demo-poster:hover .play-circle{background:#FFC14E}
@@ -962,7 +964,7 @@ body{padding-bottom:0}
           <div class="embed-shell" id="embedShell">
             <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#FFB224" stroke-width="1.8" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
             <button class="btn btn-primary" id="loadCal" type="button">Load booking calendar</button>
-            <p>Loads Calendly (a third-party service) only when you click — nothing is loaded or tracked until then. Prefer not to? <a id="calLink" href="[CALENDLY_URL]" rel="noopener" style="color:var(--amber)">Open the calendar in a new tab</a> or use the form.</p>
+            <p>Loads Calendly (a third-party service) only when you click — nothing is loaded or tracked until then. Prefer not to? You can <a id="calLink" href="#leadForm" style="color:var(--amber)">send us a message instead</a>.</p>
           </div>
         </div>
 
@@ -1100,11 +1102,13 @@ document.getElementById('loadCal').addEventListener('click', function () {
     return;
   }
   var iframe = document.createElement('iframe');
-  iframe.src = CONFIG.CALENDLY_URL + '?hide_gdpr_banner=1&background_color=122236&text_color=EAF0F6&primary_color=FFB224';
+  var join = CONFIG.CALENDLY_URL.indexOf('?') > -1 ? '&' : '?';
+  iframe.src = CONFIG.CALENDLY_URL + join + 'hide_gdpr_banner=1&background_color=122236&text_color=EAF0F6&primary_color=FFB224';
   iframe.title = 'Book your free Lead Leak Audit — booking calendar';
   iframe.loading = 'lazy';
   iframe.width = '100%'; iframe.height = '640'; // explicit size → no CLS
-  shell.replaceChildren(iframe);
+  shell.innerHTML = '';
+  shell.appendChild(iframe);
 });
 
 /* ═══════ Lead form: honeypot + validation + HTTPS POST to n8n ═══════
@@ -1159,13 +1163,14 @@ form.addEventListener('submit', function (ev) {
   }).finally(function () { btn.disabled = false; });
 });
 
-/* Until CALENDLY_URL is configured, point the fallback link at the form
-   instead of a dead placeholder */
+/* Once CALENDLY_URL is configured, upgrade the fallback link (which points
+   at the form by default) into a direct calendar link */
 var calLink = document.getElementById('calLink');
-if (calLink && CONFIG.CALENDLY_URL.indexOf('[') === 0) {
-  calLink.href = '#leadForm';
-  calLink.textContent = 'send us a message instead';
-  calLink.removeAttribute('rel');
+if (calLink && CONFIG.CALENDLY_URL.indexOf('[') !== 0) {
+  calLink.href = CONFIG.CALENDLY_URL;
+  calLink.textContent = 'open the calendar in a new tab';
+  calLink.setAttribute('rel', 'noopener');
+  calLink.setAttribute('target', '_blank');
 }
 
 /* ═══════ Demo simulation player (stand-in for the real client video) ═══════ */
