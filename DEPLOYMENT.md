@@ -10,7 +10,7 @@ Files: `index.html` (the site), `privacy.html` (linked from footer + form). No b
 | `[CALENDLY_URL]` | `CONFIG.CALENDLY_URL` in script + "open in new tab" link | Your Calendly event link. Using Cal.com instead? Also change `frame-src https://calendly.com` → `https://cal.com` in the CSP. |
 | `44XXXXXXXXXX` | 3 WhatsApp links (final CTA, footer, sticky bar) | Your number in international format, no `+`, e.g. `447700900123`. |
 | `[X]` and `[MONTHS]` | Case study metrics | Real Diji Catering numbers. **Do not launch with placeholders visible.** |
-| `[LOOM_URL]`, `[GITHUB_URL]` | Proof section + footer | Your Loom demo and GitHub links. |
+| Demo video | Proof section | An animated simulation currently stands in (see the `OWNER:` comment in index.html). When the real Loom video is ready, replace the `.demo` block with a click-to-activate embed and add the video host to the CSP `frame-src`. GitHub links now point to github.com/GolamRabbani99. |
 | `https://firstreply.dev` | Canonical, og:url, JSON-LD | Your real domain. |
 | `[CONTACT_EMAIL]`, `[DATE]` | privacy.html | Your contact email; today's date. |
 
