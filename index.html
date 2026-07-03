@@ -83,7 +83,7 @@
         "jobTitle": "Founder",
         "alumniOf": "University of Hertfordshire"
       },
-      "knowsAbout": ["Meta Conversions API", "n8n automation", "GDPR compliance", "Lead response automation", "Meta ads management"],
+      "knowsAbout": ["Meta Conversions API", "n8n automation", "GDPR compliance", "Lead response automation", "Meta ads management", "Facebook and Instagram lead generation"],
       "priceRange": "££"
     },
     {
@@ -107,7 +107,7 @@
       "name": "Full Growth Engine",
       "provider": { "@id": "https://firstreply.dev/#business" },
       "areaServed": "GB",
-      "description": "Tracking, speed-to-lead, Meta ads management and automated reporting on a monthly retainer.",
+      "description": "Facebook and Instagram lead generation campaigns, tracking, speed-to-lead and automated reporting on a monthly retainer.",
       "offers": { "@type": "Offer", "priceCurrency": "GBP", "price": "1000", "description": "£1,000–£2,000 per month retainer" }
     },
     {
@@ -319,6 +319,49 @@ header{background:var(--ink)}
 .cta-pulse{animation:ring 3.2s ease-out infinite}
 @keyframes ring{0%{box-shadow:0 0 0 0 rgba(255,178,36,.45)}60%{box-shadow:0 0 0 16px rgba(255,178,36,0)}100%{box-shadow:0 0 0 0 rgba(255,178,36,0)}}
 
+/* ═══════════ LEAD JOURNEY MAP — self-playing 16s "video" loop ═══════════
+   Generate → Capture → Nurture. Eight stages light in sequence, captions
+   crossfade per phase, progress bar tracks the loop. Pure CSS. */
+.jboard{background:var(--ink-2);border:1px solid var(--ink-3);border-radius:var(--radius);padding:1.5rem;margin-top:2.5rem}
+.jhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.78rem;color:var(--text-inv-soft)}
+.jphases{display:grid;gap:1.75rem}
+@media(min-width:900px){.jphases{grid-template-columns:1fr 1.35fr 1fr}}
+.jphase:not(:first-child){padding-top:1.5rem;border-top:1px dashed var(--ink-3)}
+@media(min-width:900px){.jphase:not(:first-child){padding-top:0;padding-left:1.75rem;border-top:0;border-left:1px dashed var(--ink-3)}}
+.jphase-label{display:inline-flex;align-items:center;gap:.5rem;margin-bottom:1rem;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.72rem;font-weight:700;
+  letter-spacing:.14em;color:var(--text-inv-soft);border:1px solid var(--ink-3);border-radius:99px;padding:.35rem .85rem}
+.jphase-label b{color:var(--amber)}
+.jsteps{display:grid;gap:.5rem}
+.jstep{display:flex;align-items:center;gap:.8rem;padding:.6rem .8rem;border-radius:10px;
+  border:1px solid transparent;opacity:.45;animation:jstage 16s infinite}
+.jstep svg{width:20px;height:20px;flex:none;color:var(--text-inv-soft)}
+.jstep b{display:block;font-size:.9rem;color:var(--text-inv)}
+.jstep span{font-size:.78rem;color:var(--text-inv-soft)}
+@keyframes jstage{
+  0%{opacity:.45;border-color:transparent;background:transparent}
+  2%,10%{opacity:1;border-color:var(--amber);background:rgba(255,178,36,.08)}
+  15%,100%{opacity:.8;border-color:var(--ink-3);background:transparent}
+}
+.jcap{position:relative;min-height:1.7em;margin-top:1.4rem;text-align:center;font-size:.93rem;color:var(--text-inv-soft)}
+.jcap span{position:absolute;inset:0;opacity:0}
+.jcap span:nth-child(1){animation:jcap1 16s infinite}
+.jcap span:nth-child(2){animation:jcap2 16s infinite}
+.jcap span:nth-child(3){animation:jcap3 16s infinite}
+@keyframes jcap1{0%,2%{opacity:0}5%,20%{opacity:1}26%,100%{opacity:0}}
+@keyframes jcap2{0%,26%{opacity:0}31%,69%{opacity:1}75%,100%{opacity:0}}
+@keyframes jcap3{0%,74%{opacity:0}79%,97%{opacity:1}100%{opacity:0}}
+.jprog{height:3px;background:var(--ink-3);border-radius:99px;margin-top:1rem;overflow:hidden}
+.jprog i{display:block;height:100%;background:var(--amber);transform-origin:left;transform:scaleX(0);animation:jfill 16s linear infinite}
+@keyframes jfill{to{transform:scaleX(1)}}
+@media (prefers-reduced-motion:reduce){
+  .jstep{opacity:1;border-color:var(--ink-3)}
+  .jcap span{position:static;display:block;opacity:1}
+  .jcap{min-height:0}
+  .jprog{display:none}
+}
+
 /* ═══════════ PAIN CARDS ═══════════ */
 .cards{display:grid;gap:1.25rem;margin-top:2.5rem}
 @media(min-width:768px){.cards{grid-template-columns:repeat(3,1fr)}}
@@ -459,6 +502,7 @@ body{padding-bottom:0}
     <nav aria-label="Main navigation">
       <ul class="nav-links">
         <li><a href="#system">The system</a></li>
+        <li><a href="#journey">Lead journey</a></li>
         <li><a href="#proof">Results</a></li>
         <li><a href="#how">How it works</a></li>
         <li><a href="#security">Security</a></li>
@@ -622,12 +666,13 @@ body{padding-bottom:0}
           <span class="step-no">TIER 3 · HANDS-OFF</span>
           <h3 id="t3-h">Full Growth Engine</h3>
           <p class="price">£1,000–£2,000<small>per month, rolling — 30 days' notice</small></p>
-          <p>Tracking, speed-to-lead, Meta ads management and automated reporting — one system, one monthly number, aimed at booked business rather than clicks.</p>
+          <p>Lead generation campaigns across Facebook, Instagram and your social channels — plus tracking, speed-to-lead and automated reporting. One system, one monthly number, aimed at booked business rather than clicks.</p>
           <details>
             <summary>What's included</summary>
             <ul>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Everything in Tracking Fix + Speed-to-Lead</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Meta ads managed towards enquiries and bookings, not clicks</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Facebook &amp; Instagram lead-gen campaigns — 5+ years of hands-on Meta ads experience</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Managed towards enquiries and bookings, not clicks</li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Automated weekly report: spend → leads → replies → bookings</li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Quarterly strategy review</li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>No long contracts — rolling monthly</li>
@@ -635,6 +680,78 @@ body{padding-bottom:0}
           </details>
           <a class="btn btn-ghost-light" href="#book">Run the engine</a>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ LEAD JOURNEY MAP (self-playing simulation) ═══════════ -->
+  <section id="journey" class="dark" aria-labelledby="journey-h">
+    <div class="wrap">
+      <div class="center reveal">
+        <p class="eyebrow">The working map</p>
+        <h2 id="journey-h">Watch a lead travel through your system.</h2>
+        <p class="lead">From the first Facebook ad to a booked call — generation, capture and nurture running as one connected machine. This is a live simulation of the exact pipeline we build and run for you.</p>
+      </div>
+      <div class="jboard reveal" role="img" aria-label="Animated simulation of the lead journey in three phases. Phase one, generate: a targeted Facebook or Instagram advert reaches the right audience and they click. Phase two, capture: the lead submits a form, is captured into one pipeline, the AI drafts a reply which a human approves, and the reply is sent within 60 seconds. Phase three, nurture: automated polite follow-ups continue until the lead books a call.">
+        <div class="jhead">
+          <span class="fh"><svg class="gear" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.6 4.6l2.1 2.1M17.3 17.3l2.1 2.1M19.4 4.6l-2.1 2.1M6.7 17.3l-2.1 2.1"/></svg>lead-journey · simulation</span>
+          <span class="live">RUNNING</span>
+        </div>
+        <div class="jphases">
+          <div class="jphase">
+            <span class="jphase-label"><b>01</b> GENERATE</span>
+            <div class="jsteps">
+              <div class="jstep" style="animation-delay:0s">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m3 11 14-6v14L3 13v-2z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
+                <div><b>Facebook &amp; Instagram ads run</b><span>Campaigns built on 5+ years of Meta ads experience</span></div>
+              </div>
+              <div class="jstep" style="animation-delay:2s">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"/></svg>
+                <div><b>The right people click</b><span>Targeted, tracked, every pound accounted for</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="jphase">
+            <span class="jphase-label"><b>02</b> CAPTURE</span>
+            <div class="jsteps">
+              <div class="jstep" style="animation-delay:4s">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9h10M7 13h6"/></svg>
+                <div><b>Lead submits the form</b><span>Website, lead ad or message — any source</span></div>
+              </div>
+              <div class="jstep" style="animation-delay:6s">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5 5h14l3 7v7H2v-7z"/></svg>
+                <div><b>Captured instantly</b><span>Into one pipeline — nothing sits in an inbox</span></div>
+              </div>
+              <div class="jstep" style="animation-delay:8s">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3v3M8 21h8M12 17v4"/><rect x="4" y="6" width="16" height="11" rx="3"/><circle class="eye" cx="9" cy="11.5" r="1.2" fill="currentColor" stroke="none"/><circle class="eye" cx="15" cy="11.5" r="1.2" fill="currentColor" stroke="none"/></svg>
+                <div><b>AI drafts · you approve ✓</b><span>One tap on WhatsApp — nothing sends without you</span></div>
+              </div>
+              <div class="jstep" style="animation-delay:10s">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg>
+                <div><b>Reply sent in 60 seconds</b><span>While competitors are still asleep</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="jphase">
+            <span class="jphase-label"><b>03</b> NURTURE</span>
+            <div class="jsteps">
+              <div class="jstep" style="animation-delay:12s">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg>
+                <div><b>Polite follow-ups, on schedule</b><span>Day 1 · day 3 · day 7 — until they answer</span></div>
+              </div>
+              <div class="jstep" style="animation-delay:14s">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="m9 15 2 2 4-4"/></svg>
+                <div><b>Call booked ✓</b><span>The lead you paid for becomes a customer</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="jcap" aria-hidden="true">
+          <span>Phase 1 — Generate: targeted Meta ads bring the right people in</span>
+          <span>Phase 2 — Capture: answered in under 60 seconds, human-approved</span>
+          <span>Phase 3 — Nurture: automatic follow-ups until the call is booked</span>
+        </div>
+        <div class="jprog" aria-hidden="true"><i></i></div>
       </div>
     </div>
   </section>
@@ -706,7 +823,7 @@ body{padding-bottom:0}
         <p class="lead" style="margin-top:1rem">I'm Golam Rabbani. I spent years as a Digital Marketing Manager watching good leads die in inboxes — then took an MSc in Computer Network &amp; System Security to learn how to build systems properly. Firstreply is both halves: marketing that converts, engineered by someone trained to protect your data.</p>
         <ul class="founder-badges">
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2 3 6v6c0 5 3.8 8.6 9 10 5.2-1.4 9-5 9-10V6z"/><path d="m9 12 2 2 4-4"/></svg><span><strong>MSc Computer Network &amp; System Security</strong> — University of Hertfordshire</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 3v18h18"/><path d="m7 14 4-4 4 3 5-6"/></svg><span><strong>Ex-Digital Marketing Manager</strong> — I've run the campaigns, not just the code</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 3v18h18"/><path d="m7 14 4-4 4 3 5-6"/></svg><span><strong>Ex-Digital Marketing Manager</strong> — 5+ years running Facebook &amp; social lead-gen campaigns, not just the code</span></li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M13 5l-2 14"/></svg><span><strong>n8n &amp; Python automation specialist</strong> — pipelines you can inspect on GitHub</span></li>
         </ul>
       </div>
