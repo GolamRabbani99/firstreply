@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /blog/_TEMPLATE.html
+Disallow: /blog/_TEMPLATE
+Disallow: /blog/topics.md
 
 Sitemap: https://firstreply.dev/sitemap.xml

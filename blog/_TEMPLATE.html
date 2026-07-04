@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!-- ═══════════════════════════════════════════════════════════════════════
+  POST TEMPLATE — the daily writing routine copies this file to
+  blog/<slug>.html and replaces every {{PLACEHOLDER}}. Do not link to this
+  file from anywhere. Rules for the writer:
+  · British English, first person (Golam's voice), practical and specific
+  · 900–1,300 words, varied sentence length, no AI-hype words
+    (never "revolutionise", "unleash", "supercharge", "game-changer",
+    "in today's fast-paced world", "delve", "elevate")
+  · Open with a concrete scene or number, not a definition
+  · At least one honest "you don't need us for this" moment
+  · No invented statistics or fake client stories; keep anecdotes generic
+    unless they refer to the real Diji Catering case study
+  · TITLE ≤ 60 chars, DESCRIPTION ≤ 155 chars, slug = kebab-case keyword
+═══════════════════════════════════════════════════════════════════════ -->
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{META_TITLE}}</title>
+<meta name="description" content="{{META_DESCRIPTION}}">
+<link rel="canonical" href="https://firstreply.dev/blog/{{SLUG}}">
+<meta name="theme-color" content="#0B1522">
+<meta property="og:type" content="article">
+<meta property="og:title" content="{{POST_TITLE}}">
+<meta property="og:description" content="{{META_DESCRIPTION}}">
+<meta property="og:url" content="https://firstreply.dev/blog/{{SLUG}}">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%230B1522'/%3E%3Cpath%20d='M9%2023V9h14v4h-9v3h8v4h-8v3z'%20fill='%23FFB224'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/blog/blog.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "{{POST_TITLE}}",
+  "description": "{{META_DESCRIPTION}}",
+  "datePublished": "{{ISO_DATE}}",
+  "dateModified": "{{ISO_DATE}}",
+  "inLanguage": "en-GB",
+  "author": { "@type": "Person", "name": "Golam Rabbani", "jobTitle": "Founder, Firstreply" },
+  "publisher": { "@type": "Organization", "name": "Firstreply", "url": "https://firstreply.dev/" },
+  "mainEntityOfPage": "https://firstreply.dev/blog/{{SLUG}}"
+}
+</script>
+</head>
+<body>
+<header class="bhead">
+  <nav class="bnav" aria-label="Blog navigation">
+    <a class="blogo" href="/">firstreply<span>_</span></a>
+    <ul class="bnav-links">
+      <li class="hide-sm"><a href="/#system">Services</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a class="cta" href="/#book">Book a free audit</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="bwrap">
+<article>
+  <h1>{{POST_TITLE}}</h1>
+  <div class="pmeta">
+    <span>By Golam Rabbani</span>
+    <span>{{HUMAN_DATE}}</span>
+    <span>{{READ_TIME}} min read</span>
+  </div>
+
+  {{POST_BODY_HTML}}
+
+  <div class="post-cta">
+    <b>Want to know where your leads are leaking?</b>
+    <p>Book a free 15-minute Lead Leak Audit. We'll look at your ads, forms and inbox together and show you exactly where enquiries go cold. No pitch deck, no obligation.</p>
+    <a href="/#book">Book your free Lead Leak Audit</a>
+  </div>
+
+  <div class="author">
+    <span class="av">GR</span>
+    <div>
+      <b>Golam Rabbani</b>
+      <p>Founder of Firstreply. Ex-Digital Marketing Manager with 5+ years running Facebook campaigns, MSc in Computer Network &amp; System Security. Based in London, working with businesses worldwide.</p>
+    </div>
+  </div>
+</article>
+</main>
+
+<footer class="bfoot">
+  <div class="bfoot-in">
+    <span>© 2026 Firstreply · Based in London, working worldwide</span>
+    <span><a href="/">Home</a> · <a href="/blog/">Blog</a> · <a href="/privacy">Privacy</a></span>
+  </div>
+</footer>
+</body>
+</html>
