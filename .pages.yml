@@ -1,0 +1,38 @@
+media:
+  input: blog/images
+  output: /blog/images
+
+content:
+  - name: posts
+    label: Blog posts
+    type: collection
+    path: content/posts
+    view:
+      fields: [title, date, archived]
+      sort: [date]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: date
+        label: Publish date
+        type: date
+        options:
+          format: yyyy-MM-dd
+      - name: description
+        label: SEO description (shows in Google — keep under 155 characters)
+        type: string
+      - name: teaser
+        label: Card teaser (one sentence shown on the blog page)
+        type: string
+      - name: archived
+        label: Archive this post (moves it off the blog page into the archive)
+        type: boolean
+        default: false
+      - name: body
+        label: Post content
+        type: rich-text

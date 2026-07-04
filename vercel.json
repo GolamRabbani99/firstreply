@@ -1,4 +1,6 @@
 {
+  "buildCommand": "python3 scripts/build_blog.py",
+  "outputDirectory": "dist",
   "cleanUrls": true,
   "redirects": [
     {

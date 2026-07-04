@@ -1,0 +1,38 @@
+name: Daily blog post
+
+on:
+  schedule:
+    - cron: "0 7 * * *"   # 07:00 UTC = 8am London in summer, 7am in winter
+  workflow_dispatch: {}    # allows manual "Run workflow" for testing
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-blog
+  cancel-in-progress: false
+
+jobs:
+  write-post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Write today's post with Claude
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python3 scripts/write_post.py
+
+      - name: Commit and push
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "No changes — nothing to publish today."
+            exit 0
+          fi
+          TITLE=$(cat .post_title 2>/dev/null || echo "daily post")
+          rm -f .post_title
+          git config user.name "firstreply-blog-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git commit -m "Blog: $TITLE" -m "Co-Authored-By: Claude (automated) <noreply@anthropic.com>"
+          git push
