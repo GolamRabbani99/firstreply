@@ -223,6 +223,12 @@ h3{font-size:1.2rem;font-weight:700}
 
 /* ═══════════ HEADER ═══════════ */
 header{background:var(--ink)}
+/* Sticky nav on tablet/desktop only — mobile uses the bottom CTA bar instead */
+@media(min-width:768px){
+  header{position:sticky;top:0;z-index:60;transition:box-shadow .2s ease}
+  header.stuck{box-shadow:0 4px 24px rgba(0,0,0,.4)}
+  html{scroll-padding-top:88px} /* anchor jumps clear the sticky header */
+}
 .nav{display:flex;align-items:center;justify-content:space-between;padding-block:1.1rem}
 .logo{font-weight:800;font-size:1.25rem;color:var(--text-inv);text-decoration:none;letter-spacing:-.02em;display:inline-flex;align-items:center;min-height:48px}
 .logo .tick{color:var(--amber)}
@@ -1091,7 +1097,9 @@ if ('IntersectionObserver' in window && motionOK) {
 /* ═══════ Sticky mobile CTA — passive listener, shown after the hero ═══════ */
 var sticky = document.getElementById('stickyCta');
 var bookSection = document.getElementById('book');
+var headerEl = document.querySelector('header');
 function updateSticky() {
+  headerEl.classList.toggle('stuck', window.scrollY > 10);
   var pastHero = window.scrollY > 640;
   var nearBook = bookSection.getBoundingClientRect().top < window.innerHeight;
   var show = pastHero && !nearBook;
