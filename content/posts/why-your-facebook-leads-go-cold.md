@@ -1,6 +1,7 @@
 ---
 title: Why your Facebook leads go cold (and the 60-minute rule)
 date: 2026-07-04
+image: /blog/images/facebook-leads-60-minute-rule.png
 description: You're paying for Facebook leads that never answer. Here's why they
   go cold so fast — and the 60-minute rule that decides who wins the job.
 teaser: What actually happens in the gap between a lead's click and your reply —

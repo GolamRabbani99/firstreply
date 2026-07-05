@@ -1,6 +1,7 @@
 ---
 title: How AI actually helps digital marketing and Google SEO (and where it doesn't)
 date: 2026-07-05
+image: /blog/images/ai-digital-marketing-seo.png
 description: An honest, practical guide to using AI in digital marketing and SEO — what genuinely works, what Google now penalises, and where humans still win.
 teaser: What AI genuinely does well in marketing and SEO, what Google now penalises, and the jobs that still belong to humans.
 archived: false
