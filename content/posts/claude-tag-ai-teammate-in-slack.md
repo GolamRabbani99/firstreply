@@ -4,6 +4,7 @@ date: 2026-07-05
 image: /blog/images/claude-tag-slack.png
 description: Claude Tag lets you @-mention an AI in Slack like a colleague. What it does, how it uses your channel's context, and what it means for small teams.
 teaser: You @-mention it like a colleague, it reads the thread, does the work and reports back. Claude Tag explained without the jargon.
+category: Future of work
 archived: false
 ---
 <p>Imagine the most reliable colleague you've ever had. You tag them into a conversation, they read the whole thread so you don't have to explain anything twice, they go away and do the work — and they message you when it's done. Now imagine they never sleep and never get bored of being tagged.</p>

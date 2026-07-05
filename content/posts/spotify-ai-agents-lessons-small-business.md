@@ -4,6 +4,7 @@ date: 2026-07-05
 image: /blog/images/spotify-ai-lessons.png
 description: At Spotify, an employee can describe an idea and have AI build a working prototype in an hour or two. The principle scales down better than you'd think.
 teaser: Describe an idea, get a working prototype in an hour or two. Spotify's AI habit scales down to small businesses surprisingly well.
+category: AI in business
 archived: false
 ---
 <p>Spotify runs one of the largest codebases in consumer tech — more than twenty million lines of code. So when their VP of Engineering, Niklas Gustavsson, explains how they use AI day to day, it's tempting to file it under "fine for them, irrelevant for me".</p>

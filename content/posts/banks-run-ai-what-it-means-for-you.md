@@ -4,6 +4,7 @@ date: 2026-07-05
 image: /blog/images/banks-ai-trust.png
 description: Major banks are running Claude across their organisations. If the most regulated industry on earth trusts AI in production, what's your excuse?
 teaser: The most regulated, most audited industry on earth has put AI into production. That should recalibrate your sense of what's safe.
+category: AI in business
 archived: false
 ---
 <p>Banks are not early adopters. They are the industry of triple sign-offs, compliance departments bigger than most companies, and regulators who can end careers with a letter. When banks move on a technology, it isn't a trend any more — it's infrastructure.</p>

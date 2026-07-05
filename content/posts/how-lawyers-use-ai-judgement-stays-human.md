@@ -4,6 +4,7 @@ date: 2026-07-05
 image: /blog/images/lawyers-ai-judgement.png
 description: Lawyers at a global firm explain how AI changes legal work while the judgement call stays with the lawyer. The same rule applies to your business.
 teaser: If the most cautious profession on earth has found its line with AI, the rest of us can borrow it.
+category: AI in business
 archived: false
 ---
 <p>If you want to know how careful to be with AI, watch the most careful profession in the world adopt it. Lawyers get struck off for mistakes. Their words carry liability. And they are using AI anyway — which tells you something about how useful it's become.</p>

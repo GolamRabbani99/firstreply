@@ -4,6 +4,7 @@ date: 2026-07-05
 image: /blog/images/ai-creative-squidsoup.png
 description: Art collective Squidsoup uses Claude while building immersive light and sound installations — including a live orchestra performance in London.
 teaser: An art collective using AI to build immersive light-and-sound shows — proof that automation and craft aren't enemies.
+category: AI in business
 archived: false
 ---
 <p>If you think AI is only for spreadsheets and software, here's a corrective: Squidsoup, a collective of artists and designers who build immersive experiences from sound, light and space, use Claude in their creative process — and <a href="https://www.youtube.com/watch?v=YovuEy7ufhE" rel="noopener">Anthropic's Claude channel filmed them</a> preparing one of their largest projects yet: a live performance with the Orchestra of the Age of Enlightenment at London's Southbank Centre.</p>

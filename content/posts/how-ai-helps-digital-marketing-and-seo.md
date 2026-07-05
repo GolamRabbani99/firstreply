@@ -4,6 +4,7 @@ date: 2026-07-05
 image: /blog/images/ai-digital-marketing-seo.png
 description: An honest, practical guide to using AI in digital marketing and SEO — what genuinely works, what Google now penalises, and where humans still win.
 teaser: What AI genuinely does well in marketing and SEO, what Google now penalises, and the jobs that still belong to humans.
+category: Marketing and SEO
 archived: false
 ---
 <p>Last month I watched a business owner spend forty minutes writing one follow-up email to a lead. It was a good email. It was also the third time that week he'd written roughly the same one from scratch. Meanwhile, an AI could have drafted it in four seconds — and he'd have spent his forty minutes on the two enquiries he never got round to answering at all.</p>

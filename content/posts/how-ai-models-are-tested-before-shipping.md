@@ -4,6 +4,7 @@ date: 2026-07-05
 image: /blog/images/ai-testing-break-it.png
 description: Anthropic has teams whose job is to push new Claude models until they fail before release. Why that culture of breaking things should shape how you buy AI.
 teaser: There are people whose whole job is making the AI fail before you ever see it. That should change how you shop for AI.
+category: Trust and safety
 archived: false
 ---
 <p>Here's a comforting thought for anyone nervous about AI: before a new Claude model reaches the public, there are teams inside Anthropic whose actual job is to <strong>make it fail</strong>. Not to admire it. To break it.</p>

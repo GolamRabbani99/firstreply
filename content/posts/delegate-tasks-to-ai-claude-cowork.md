@@ -4,6 +4,7 @@ date: 2026-07-05
 image: /blog/images/delegate-ai-tasks.png
 description: Claude Cowork lets you hand AI a task once and have it repeat on schedule — meeting prep, content scans, reports. What delegation to AI really looks like.
 teaser: Hand the AI a job once and it repeats on schedule — meeting prep, content scans, weekly reports. Delegation, not chatting.
+category: Future of work
 archived: false
 ---
 <p>There's a moment every business owner knows: Sunday evening, laptop open, doing the same weekly job you did last Sunday and the fifty Sundays before it. Preparing the week's schedule. Pulling the numbers. Checking what competitors posted. It's not hard work — it's just <em>yours</em>, forever, apparently.</p>

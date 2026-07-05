@@ -4,6 +4,7 @@ date: 2026-07-05
 image: /blog/images/claude-future-of-work.png
 description: You're working late again while the way work gets done quietly changed. Here's what's replacing the grind — and the three moves to make before your competitors do.
 teaser: You're still doing everything yourself. The way work gets done just quietly changed — here are the three moves to make first.
+category: Future of work
 archived: false
 ---
 <p>It's 9pm. You're still at the laptop. There's a quote to send, two enquiries you haven't answered, and a report you promised yourself you'd finish on Monday. It's Thursday.</p>

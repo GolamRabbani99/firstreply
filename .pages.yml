@@ -32,6 +32,12 @@ content:
       - name: teaser
         label: Card teaser (one sentence shown on the blog page)
         type: string
+      - name: category
+        label: Category
+        type: select
+        default: AI in business
+        options:
+          values: [Lead generation, Marketing and SEO, Future of work, AI in business, Trust and safety]
       - name: archived
         label: Archive this post (moves it off the blog page into the archive)
         type: boolean

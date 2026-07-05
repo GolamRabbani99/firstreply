@@ -4,6 +4,7 @@ date: 2026-07-05
 image: /blog/images/claude-code-one-year.png
 description: The team behind Claude Code reflects on its first year — verification, routines, merging roles. Four lessons any business owner can use, no code required.
 teaser: From a Slack demo that got two reactions to worldwide deployment in a year — and four lessons that have nothing to do with code.
+category: Future of work
 archived: false
 ---
 <p>A year ago, Claude Code — an AI tool that does programming work from a simple text instruction — was an internal experiment whose first demo in the company Slack got, by the team's own admission, two reactions. Today it's used by developers and organisations worldwide.</p>

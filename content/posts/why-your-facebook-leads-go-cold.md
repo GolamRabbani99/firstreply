@@ -6,6 +6,7 @@ description: You're paying for Facebook leads that never answer. Here's why they
   go cold so fast — and the 60-minute rule that decides who wins the job.
 teaser: What actually happens in the gap between a lead's click and your reply —
   and the rule that decides who wins the job.
+category: Lead generation
 archived: false
 ---
 A catering owner I work with once showed me her lead ads dashboard with genuine confusion. Forty-two leads that month. Cost per lead: about £11. Enquiries that turned into actual conversations: six.

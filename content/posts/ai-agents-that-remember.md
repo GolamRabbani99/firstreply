@@ -4,6 +4,7 @@ date: 2026-07-05
 image: /blog/images/ai-agents-memory.png
 description: Most AI forgets everything when you close the chat. Anthropic's workshop on agent memory shows what changes when it doesn't — explained simply.
 teaser: Most AI has amnesia — close the chat and it forgets you existed. Here's what changes when it doesn't.
+category: Future of work
 archived: false
 ---
 <p>Here's the dirty secret of most AI tools: they have amnesia. You spend twenty minutes teaching the chatbot how your business works, get a great result — and the moment you close the window, it forgets you ever existed. Tomorrow you start from zero.</p>

@@ -4,6 +4,7 @@ date: 2026-07-05
 image: /blog/images/sales-ai-email-assistant.png
 description: An account executive at Anthropic built an AI that drafts customer emails in his own voice — with no coding background. The lesson for every business.
 teaser: No coding background, drowning in admin — so he built an AI that drafts customer replies in his own voice. The lesson travels.
+category: AI in business
 archived: false
 ---
 <p>Of all the AI success stories doing the rounds, this one deserves your attention precisely because it's small. No robot armies, no billion-pound lab. Just a salesperson who was sick of answering emails at midnight.</p>
