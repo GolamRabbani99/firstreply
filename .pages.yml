@@ -23,6 +23,9 @@ content:
         type: date
         options:
           format: yyyy-MM-dd
+      - name: image
+        label: Featured image (shown at the top of the post and on the blog card)
+        type: image
       - name: description
         label: SEO description (shows in Google — keep under 155 characters)
         type: string

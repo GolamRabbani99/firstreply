@@ -39,6 +39,8 @@ def md_to_html(md: str) -> str:
         s = html.escape(s, quote=False)
         s = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", s)
         s = re.sub(r"(?<!\*)\*([^*]+)\*(?!\*)", r"<em>\1</em>", s)
+        s = re.sub(r"!\[([^\]]*)\]\(([^)\s]+)\)",
+                   r'<img src="\2" alt="\1" loading="lazy">', s)
         s = re.sub(r"\[([^\]]+)\]\(([^)\s]+)\)", r'<a href="\2">\1</a>', s)
         return s
 
@@ -109,7 +111,11 @@ def parse_post(path: pathlib.Path) -> dict:
         d = datetime.date.fromtimestamp(path.stat().st_mtime)
     words = len(re.sub(r"<[^>]+>", " ", body).split())
     title = meta["title"]
+    image = meta.get("image", "").strip()
+    if image and not image.startswith(("/", "http")):
+        image = "/" + image.lstrip("./")
     return {
+        "image": image,
         "slug": re.sub(r"[^a-z0-9-]", "", path.stem.lower().replace(" ", "-").replace("_", "-")),
         "title": title,
         "meta_title": (meta.get("meta_title") or f"{title} | Firstreply")[:60],
@@ -127,8 +133,17 @@ def parse_post(path: pathlib.Path) -> dict:
 def render_post(template: str, p: dict) -> str:
     def j(s):  # safe for raw embedding inside the JSON-LD string values
         return json.dumps(s)[1:-1]
+    esc_title = html.escape(p["title"], quote=True)
+    featured = ""
+    og_image = ""
+    if p["image"]:
+        featured = (f'\n  <img class="feature" src="{p["image"]}" '
+                    f'alt="{esc_title}" fetchpriority="high">\n')
+        og_image = f'<meta property="og:image" content="{SITE}{p["image"]}">'
     out = template
     for k, v in {
+        "{{FEATURED_IMAGE}}": featured,
+        "{{OG_IMAGE}}": og_image,
         "{{META_TITLE}}": html.escape(p["meta_title"], quote=True),
         "{{META_DESCRIPTION}}": html.escape(p["description"], quote=True),
         "{{POST_TITLE}}": html.escape(p["title"], quote=False),
@@ -202,19 +217,28 @@ PAGE_SHELL = """<!DOCTYPE html>
 """
 
 CARD = """    <article class="post-card">
+{thumb}      <div class="post-card-body">
       <span class="pdate">{human} · {read} min read</span>
       <h2><a href="/blog/{slug}">{title}</a></h2>
       <p>{teaser}</p>
       <span class="more"><a href="/blog/{slug}">Read the post →</a></span>
+      </div>
     </article>
 """
 
+THUMB = ('      <a class="thumb" href="/blog/{slug}" tabindex="-1" aria-hidden="true">'
+         '<img src="{image}" alt="" loading="lazy"></a>\n')
+
 
 def cards_html(posts):
-    return "".join(CARD.format(human=p["human"], read=p["read"], slug=p["slug"],
+    out = []
+    for p in posts:
+        thumb = THUMB.format(slug=p["slug"], image=p["image"]) if p["image"] else ""
+        out.append(CARD.format(thumb=thumb, human=p["human"], read=p["read"],
+                               slug=p["slug"],
                                title=html.escape(p["title"], quote=False),
-                               teaser=html.escape(p["teaser"], quote=False))
-                   for p in posts) or '    <p style="color:#51606F">Nothing here yet.</p>\n'
+                               teaser=html.escape(p["teaser"], quote=False)))
+    return "".join(out) or '    <p style="color:#51606F">Nothing here yet.</p>\n'
 
 
 def main() -> None:
