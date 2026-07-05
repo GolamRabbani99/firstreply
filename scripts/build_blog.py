@@ -61,7 +61,9 @@ def md_to_html(md: str) -> str:
         line = raw.rstrip()
         if not line.strip():
             flush_para(); close_lists(); continue
-        if line.startswith("### "):
+        if line.lstrip().startswith("<"):  # raw HTML mixed into markdown: pass through
+            flush_para(); close_lists(); out.append(line)
+        elif line.startswith("### "):
             flush_para(); close_lists(); out.append("<h3>" + inline(line[4:]) + "</h3>")
         elif line.startswith("## "):
             flush_para(); close_lists(); out.append("<h2>" + inline(line[3:]) + "</h2>")
@@ -91,10 +93,18 @@ def parse_post(path: pathlib.Path) -> dict:
     if not m:
         sys.exit(f"{path.name}: missing frontmatter")
     meta, body = {}, m.group(2).strip()
+    last_key = None
     for line in m.group(1).splitlines():
+        # YAML folded continuation (Pages CMS wraps long values across
+        # indented lines): append to the previous key's value
+        if last_key and line[:1] in (" ", "\t") and line.strip():
+            meta[last_key] = (meta[last_key] + " " + line.strip()).strip()
+            continue
         if ":" in line:
             k, v = line.split(":", 1)
-            meta[k.strip()] = v.strip().strip('"').strip("'")
+            last_key = k.strip()
+            v = v.strip().strip('"').strip("'")
+            meta[last_key] = v[1:] if v.startswith(">") or v.startswith("|") else v
     if "title" not in meta or not meta["title"]:
         sys.exit(f"{path.name}: missing title")
     if not body:
