@@ -1,43 +1,49 @@
 ---
-title: "The future of work with Claude: the key points, in plain English"
+title: "Your next hire might not be human (and that's not a bad thing)"
 date: 2026-07-05
 image: /blog/images/claude-future-of-work.png
-description: Anthropic's "The future of work" video explains AI that works for days, remembers context and joins your team chat. Here's what it means, simply.
-teaser: AI that works for days without losing the plot, remembers what it learned, and joins your team chat. The key points, no jargon.
+description: You're working late again while the way work gets done quietly changed. Here's what's replacing the grind — and the three moves to make before your competitors do.
+teaser: You're still doing everything yourself. The way work gets done just quietly changed — here are the three moves to make first.
 archived: false
 ---
-<p>Anthropic — the company behind the Claude AI — recently published a short video called <a href="https://www.youtube.com/watch?v=MhfnicQVkgY" rel="noopener">The future of work with Claude</a>, featuring Boris Cherny and Cat Wu, the two people who run Claude Code. It's eleven minutes long, aimed mostly at a technical crowd, and easy to switch off halfway through if you don't live in that world.</p>
+<p>It's 9pm. You're still at the laptop. There's a quote to send, two enquiries you haven't answered, and a report you promised yourself you'd finish on Monday. It's Thursday.</p>
 
-<p>That would be a shame, because underneath the product talk are three shifts that will reach every business — including the ones that don't think of themselves as "tech businesses" at all. Here are the key points, translated.</p>
+<p>You didn't start your business for this. You started it for the food, or the students, or the events — the craft. The admin was supposed to be the small print. Somewhere along the way it became the job.</p>
 
-<h2>1. AI is moving from "ask and wait" to "tag it in"</h2>
+<p>Here's what I want you to know: while you were buried in that inbox, the way work gets done quietly changed. I watched an eleven-minute conversation between the two people who run Claude Code at Anthropic — <a href="https://www.youtube.com/watch?v=MhfnicQVkgY" rel="noopener">it's here if you want it</a> — and it confirmed something I've been telling clients all year. The winners of the next few years won't be the businesses that work the longest hours. They'll be the ones who learned to delegate to machines first — without handing over the steering wheel.</p>
 
-<p>The line that opens the video sums it up: <em>"In the past, you had to open Claude and ask. With Claude Tag, Claude jumps in."</em></p>
+<p>Let me translate what's coming, because it affects you more than it affects the tech crowd it was filmed for.</p>
 
-<p>Until now, using AI meant stopping what you were doing, opening a chat window, explaining everything from scratch, and copying the answer back out. The new model is different: the AI sits inside the tools your team already uses — in this case Slack — and you simply tag it into a conversation the way you'd tag a colleague. It reads what the thread already knows, does the work, and comes back when it's finished or needs a decision from you.</p>
+<h2>The assistant that stopped waiting to be asked</h2>
 
-<p>Why it matters to you: the friction was always the real barrier. Most business owners don't avoid AI because it's not clever enough — they avoid it because it's another tab, another login, another thing to remember. When the AI comes to where the work already happens, that excuse disappears.</p>
+<p>The line that opens the video: <em>"In the past, you had to open Claude and ask. With Claude Tag, Claude jumps in."</em></p>
 
-<h2>2. AI can now stay on a task for days, not minutes</h2>
+<p>Until now, AI was a vending machine. Walk over, put in a question, carry the answer back to your actual work. Useful, but the walking was on you — and that's exactly why you stopped using it after week two.</p>
 
-<p>The video describes the research behind "long-horizon" work — teaching the AI to stay on track across a task that takes days rather than losing the plot after ten minutes. Paired with a memory system that carries what it learned from one session into the next, the AI stops being a goldfish.</p>
+<p>The new generation joins the conversation where it's already happening. You tag it in like a colleague. It reads the thread, does the job, and reports back when it's done. The friction — the reason AI never stuck for you — is being deleted.</p>
 
-<p>Why it matters to you: think about what actually eats your week. It's rarely one big task — it's the long-running, drip-fed ones. Chasing a supplier across five emails. Following up a quote three times. Reconciling the month's enquiries against bookings. Those are exactly the jobs that used to be impossible to hand to AI, because it forgot everything between steps. That constraint is dissolving.</p>
+<h2>The assistant that doesn't forget you overnight</h2>
 
-<h2>3. The people building it use it for most of their own work</h2>
+<p>Two more things from that conversation matter to you. First, this AI can now stay on a task for <strong>days</strong> without losing the plot. Second, it remembers — what it learned about the work last week is still there this week.</p>
 
-<p>The most striking number in the video: <strong>65% of the Claude product team's code is now created by Claude itself</strong>. The people with the deepest knowledge of the tool's limits trust it with the majority of their core output — with humans reviewing and steering.</p>
+<p>Stop and think about what actually steals your evenings. It's rarely one big task. It's the long, drip-fed ones: the quote you've chased three times, the supplier thread that's been open since March, the follow-ups that only exist in your head. Those were impossible to hand to a machine with amnesia. They aren't any more.</p>
 
-<p>Why it matters to you: notice the shape of that arrangement, because it's the honest template for every business. The AI does the volume; the humans do the judgement. Nobody at Anthropic is letting the AI ship whatever it likes — the work is reviewed. That's the same principle we insist on at Firstreply: <a href="/blog/how-ai-helps-digital-marketing-and-seo">AI drafts, humans approve</a> — whether it's code or a reply to a customer enquiry.</p>
+<h2>The number that should change your mind</h2>
 
-<h2>What this means for a small business, practically</h2>
+<p>Here's the proof this isn't hype: <strong>65% of the Claude product team's own code is now written by Claude</strong>. The people who know this technology's flaws better than anyone on earth trust it with most of their core output.</p>
 
-<ul>
-<li><strong>Stop thinking of AI as a chatbot.</strong> The direction of travel is an assistant that lives inside your existing tools, holds context over time, and handles whole processes — not one-off questions.</li>
-<li><strong>List your "days-long" tasks.</strong> Quote follow-ups, enquiry chasing, weekly reporting, content that goes out on schedule. These are the first candidates for the new generation of AI systems.</li>
-<li><strong>Keep a human on the approve button.</strong> The world's leading AI lab reviews its AI's work before it ships. So should you — especially for anything that reaches a customer.</li>
-</ul>
+<p>But catch the second half, because it's the half that protects you: every piece of that work is <em>reviewed by a human before it ships</em>. The machine does the volume. The people do the judgement. That's not a compromise — that's the design. It's the same rule I refuse to break in the systems we build: AI drafts your customer replies, <a href="/blog/how-ai-helps-digital-marketing-and-seo">a human approves every single one</a>.</p>
 
-<p>If the "days-long task" you'd most like to hand over is answering and chasing your leads, that happens to be exactly what we build. <a href="/#book">Book a free 15-minute Lead Leak Audit</a> and we'll show you what it would look like in your business.</p>
+<h2>Your three moves (this month, not this year)</h2>
 
-<p><em>Based on <a href="https://www.youtube.com/watch?v=MhfnicQVkgY" rel="noopener">"The future of work with Claude"</a> from Anthropic's official Claude YouTube channel. Well worth the eleven minutes.</em></p>
+<ol>
+<li><strong>Stop thinking "chatbot".</strong> Start thinking "junior teammate who never sleeps". The question isn't "what can I ask it?" — it's "what job can I hand it?"</li>
+<li><strong>Write down your drip-fed tasks.</strong> The follow-ups, the chasing, the weekly reports. The tasks that take days and live in your head. That list is your delegation plan.</li>
+<li><strong>Keep your thumb on the approve button.</strong> If the world's leading AI lab reviews its AI's work, so do you. Anything that reaches a customer gets a human yes first.</li>
+</ol>
+
+<p>Because here's the fork in the road: in a year or two, some of your competitors will answer every enquiry in sixty seconds, follow up every quote without fail, and still get home for dinner. The others will still be at the laptop at 9pm, wondering how.</p>
+
+<p>You get to pick which one you are. If you want help picking the fast lane, <a href="/#book">book a free 15-minute Lead Leak Audit</a> — we'll find the tasks you should hand over first, and I'll show you exactly how the approve button stays in your hand.</p>
+
+<p><em>Based on <a href="https://www.youtube.com/watch?v=MhfnicQVkgY" rel="noopener">"The future of work with Claude"</a> from Anthropic's official Claude YouTube channel — worth your eleven minutes.</em></p>
