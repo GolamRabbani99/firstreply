@@ -50,7 +50,7 @@
     anywhere else, and will not post at all until you replace the placeholder.
   · frame-src is locked to Calendly, which is only loaded click-to-activate.
 -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://YOUR-N8N-DOMAIN.example; frame-src https://calendly.com; form-action 'self'; base-uri 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://YOUR-N8N-DOMAIN.example; frame-src https://calendly.com https://*.calendly.com; form-action 'self'; base-uri 'none'; upgrade-insecure-requests">
 
 <title>AI Automation Agency London | Firstreply — Speed to Lead</title>
 <meta name="description" content="London-based AI automation agency working remotely with education, catering &amp; events businesses anywhere: every lead answered in 60 seconds. GDPR-first.">
@@ -1068,7 +1068,7 @@ var CONFIG = {
   // n8n webhook (must match the CSP connect-src origin above)
   WEBHOOK_URL: 'https://YOUR-N8N-DOMAIN.example/webhook/firstreply-lead',
   // Calendly event link (if using Cal.com, also change CSP frame-src)
-  CALENDLY_URL: '[CALENDLY_URL]'
+  CALENDLY_URL: 'https://calendly.com/golamrabbani-com/lead-leak-audit'
 };
 
 /* Progressive enhancement flag: reveal animations only apply when JS runs */

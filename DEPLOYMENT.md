@@ -7,7 +7,7 @@ Files: `index.html` (the site), `privacy.html` (linked from footer + form). No b
 | Placeholder | Where | Replace with |
 |---|---|---|
 | `https://YOUR-N8N-DOMAIN.example` | CSP meta tag **and** `CONFIG.WEBHOOK_URL` in the script (index.html) | Your n8n instance origin + webhook path. **Both must match** or the browser blocks the form (that's the CSP doing its job). |
-| `[CALENDLY_URL]` | `CONFIG.CALENDLY_URL` in script + "open in new tab" link | Your Calendly event link. Using Cal.com instead? Also change `frame-src https://calendly.com` → `https://cal.com` in the CSP. |
+| Calendly | ✓ done | Set to calendly.com/golamrabbani-com/lead-leak-audit (embed + fallback link both live). |
 | `44XXXXXXXXXX` | 3 WhatsApp links (final CTA, footer, sticky bar) | Your number in international format, no `+`, e.g. `447700900123`. |
 | `[X]` and `[MONTHS]` | Case study metrics | Real Diji Catering numbers. **Do not launch with placeholders visible.** |
 | Demo video | Proof section | An animated simulation currently stands in (see the `OWNER:` comment in index.html). When the real Loom video is ready, replace the `.demo` block with a click-to-activate embed and add the video host to the CSP `frame-src`. GitHub links now point to github.com/GolamRabbani99. |
