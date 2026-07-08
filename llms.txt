@@ -1,12 +1,13 @@
 # Firstreply
 
-> AI automation agency based in London, UK, working remotely with clients worldwide. We make every pound of ad spend traceable and get every lead a human-approved reply in under 60 seconds — built for education, catering and hospitality & events businesses running paid ads.
+> AI business automation and growth partner based in London, UK, working remotely with clients worldwide. We make every pound of ad spend traceable and get every lead a human-approved reply in under 60 seconds — built for education, catering and hospitality & events businesses running paid ads.
 
 ## Services
 
 - Tracking Fix: server-side Meta Conversions API setup with event deduplication, GDPR-compliant (£800–£1,200 one-off)
 - Speed-to-Lead System: every lead captured instantly, AI-drafted reply within 60 seconds with human approval gates, WhatsApp owner alerts, automated follow-up (£1,500–£2,500 setup + £250/month)
 - Full Growth Engine: Facebook & Instagram lead generation campaigns, tracking, speed-to-lead and automated reporting (£1,000–£2,000/month, rolling)
+- Also delivered: AI business process automation (email, reporting, documents, internal workflows on n8n), AI chatbots (website, WhatsApp, Messenger, Instagram), AI voice agents (24/7 phone answering, bookings, call summaries), CRM automation (pipelines, lead scoring, customer tracking)
 
 ## Key facts
 

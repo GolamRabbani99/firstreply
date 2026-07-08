@@ -198,7 +198,7 @@ PAGE_SHELL = """<!DOCTYPE html>
   <nav class="bnav" aria-label="Blog navigation">
     <a class="blogo" href="/">firstreply<span>_</span></a>
     <ul class="bnav-links">
-      <li class="hide-sm"><a href="/#system">Services</a></li>
+      <li class="hide-sm"><a href="/#services">Services</a></li>
       <li><a href="/blog/">Blog</a></li>
       <li><a class="cta" href="/#book">Book a free audit</a></li>
     </ul>
@@ -292,7 +292,7 @@ INDEX_PAGE = """<!DOCTYPE html>
   <nav class="bnav" aria-label="Blog navigation">
     <a class="blogo" href="/">firstreply<span>_</span></a>
     <ul class="bnav-links">
-      <li class="hide-sm"><a href="/#system">Services</a></li>
+      <li class="hide-sm"><a href="/#services">Services</a></li>
       <li><a href="/blog/" aria-current="page">Blog</a></li>
       <li><a class="cta" href="/#book">Book a free audit</a></li>
     </ul>
