@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ROI Calculator — What Slow Replies Cost You | Firstreply</title>
+<meta name="description" content="Enter your own enquiry numbers and see what missed and slow-answered leads cost your business every month. No email required, no made-up statistics.">
+<link rel="canonical" href="https://firstreply.dev/roi-calculator">
+<meta name="theme-color" content="#0B1522">
+<meta property="og:type" content="website">
+<meta property="og:title" content="What do slow replies cost your business? — free calculator">
+<meta property="og:description" content="Your numbers, your maths — see the monthly revenue hiding in the enquiries you miss or answer late.">
+<meta property="og:url" content="https://firstreply.dev/roi-calculator">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%230B1522'/%3E%3Cpath%20d='M9%2023V9h14v4h-9v3h8v4h-8v3z'%20fill='%23FFB224'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/blog/blog.css">
+</head>
+<body>
+<header class="bhead">
+  <nav class="bnav" aria-label="Site navigation">
+    <a class="blogo" href="/">firstreply<span>_</span></a>
+    <ul class="bnav-links">
+      <li class="hide-sm"><a href="/services/">Services</a></li>
+      <li class="hide-sm"><a href="/industries/">Industries</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a class="cta" href="/#book">Book a free call</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="phero">
+  <div class="phero-in">
+    <p class="peyebrow">Free tool · no email required</p>
+    <h1>What do slow replies actually cost you?</h1>
+    <p class="pintro">No made-up industry statistics — this calculator only uses <strong>your</strong> numbers. Enter what you know about your own enquiries and see what the leak is worth every month.</p>
+  </div>
+</div>
+
+<main class="psection">
+  <div class="roi">
+    <form class="roi-form" id="roiForm">
+      <label>Enquiries you receive per month
+        <input type="number" id="rEnq" value="40" min="1" max="100000" inputmode="numeric">
+      </label>
+      <label>Average value of a new customer (£)
+        <input type="number" id="rVal" value="500" min="1" max="10000000" inputmode="numeric">
+      </label>
+      <label>Of the enquiries you answer promptly, what % become customers?
+        <input type="number" id="rWin" value="20" min="1" max="100" inputmode="numeric">
+      </label>
+      <label>What % of enquiries get a slow reply (hours later) — or none at all?
+        <input type="number" id="rMiss" value="30" min="0" max="100" inputmode="numeric">
+      </label>
+    </form>
+
+    <div class="roi-out" aria-live="polite">
+      <p style="color:var(--text-inv);font-weight:700">If your late-and-missed enquiries converted at your normal rate:</p>
+      <p class="big" id="rMonthly">£0</p>
+      <p>estimated extra revenue per month</p>
+      <div class="roi-row"><span>Leads currently leaking / month</span><b id="rLeads">0</b></div>
+      <div class="roi-row"><span>Extra customers recoverable / month</span><b id="rCust">0</b></div>
+      <div class="roi-row"><span>Estimated extra revenue / year</span><b id="rYearly">£0</b></div>
+      <p style="margin-top:1.25rem;font-size:.82rem">Assumption, stated plainly: enquiries answered in seconds convert at least as well as the ones you already answer promptly — research on lead response suggests usually better. This is an estimate, not a promise.</p>
+      <a class="pcta" href="/#book" style="margin-top:1.25rem">Recover it — book your free strategy call</a>
+    </div>
+  </div>
+</main>
+
+<footer class="bfoot">
+  <div class="bfoot-in">
+    <span>© 2026 Firstreply · Based in London, working worldwide</span>
+    <span><a href="/">Home</a> · <a href="/services/">Services</a> · <a href="/industries/">Industries</a> · <a href="/blog/">Blog</a> · <a href="/privacy">Privacy</a></span>
+  </div>
+</footer>
+
+<script>
+'use strict';
+function fmt(n) { return '£' + Math.round(n).toLocaleString('en-GB'); }
+function calc() {
+  var enq = Math.max(0, +document.getElementById('rEnq').value || 0);
+  var val = Math.max(0, +document.getElementById('rVal').value || 0);
+  var win = Math.min(100, Math.max(0, +document.getElementById('rWin').value || 0)) / 100;
+  var miss = Math.min(100, Math.max(0, +document.getElementById('rMiss').value || 0)) / 100;
+  var leads = enq * miss;
+  var cust = leads * win;
+  var monthly = cust * val;
+  document.getElementById('rLeads').textContent = Math.round(leads);
+  document.getElementById('rCust').textContent = (Math.round(cust * 10) / 10).toString();
+  document.getElementById('rMonthly').textContent = fmt(monthly);
+  document.getElementById('rYearly').textContent = fmt(monthly * 12);
+}
+document.querySelectorAll('#roiForm input').forEach(function (i) {
+  i.addEventListener('input', calc);
+});
+calc();
+</script>
+</body>
+</html>

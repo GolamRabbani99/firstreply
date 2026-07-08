@@ -114,6 +114,46 @@ article figcaption{font-size:.85rem;color:var(--text-soft);margin-top:.5rem;text
 .author b{color:var(--ink)}
 .author p{font-size:.88rem;color:var(--text-soft);margin-top:.15rem}
 
+/* ── site sub-pages (services / industries / tools) ─────────────────── */
+.phero{background:var(--ink);padding:4rem 1.25rem 4.5rem}
+.phero-in{max-width:1100px;margin-inline:auto}
+.phero .peyebrow{font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);margin-bottom:.9rem}
+.phero h1{font-size:clamp(2rem,5vw,3rem);line-height:1.12;letter-spacing:-.02em;color:var(--text-inv);max-width:22ch}
+.phero .pintro{color:var(--text-inv-soft);font-size:1.15rem;max-width:52ch;margin-top:1.25rem;line-height:1.6}
+.pcta{display:inline-flex;align-items:center;justify-content:center;min-height:48px;background:var(--amber);color:var(--ink);border-radius:10px;padding:.85rem 1.6rem;font-weight:700;text-decoration:none;margin-top:2rem}
+.pcta:hover{background:#FFC14E}
+.psection{max-width:1100px;margin-inline:auto;padding:3.5rem 1.25rem}
+.psection h2{font-size:clamp(1.5rem,3vw,2rem);letter-spacing:-.01em;color:var(--ink);margin-bottom:1rem}
+.psection>p{color:var(--text-soft);max-width:65ch;margin-bottom:1rem}
+.fcards{display:grid;gap:1.25rem;margin-top:2rem}
+@media(min-width:700px){.fcards{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1000px){.fcards{grid-template-columns:repeat(3,1fr)}}
+.fcard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:1.5rem}
+.fcard b{color:var(--ink);display:block;margin-bottom:.4rem}
+.fcard p{color:var(--text-soft);font-size:.93rem;margin:0}
+.wflow{counter-reset:ws;display:grid;gap:.75rem;margin-top:2rem;max-width:640px}
+.wflow li{list-style:none;display:flex;gap:1rem;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:1rem 1.25rem}
+.wflow li::before{counter-increment:ws;content:"0" counter(ws);font-family:ui-monospace,Menlo,Consolas,monospace;font-weight:700;color:var(--amber-deep);flex:none}
+.pnote{background:#F2EEE7;border-radius:var(--radius);padding:1.5rem;margin-top:2.5rem;color:var(--text-soft);max-width:760px}
+.pnote b{color:var(--ink)}
+.pbook{background:var(--ink);padding:4rem 1.25rem;text-align:center}
+.pbook h2{color:var(--text-inv);font-size:clamp(1.5rem,3vw,2rem);letter-spacing:-.01em}
+.pbook p{color:var(--text-inv-soft);max-width:52ch;margin:1rem auto 0}
+.crumb{max-width:1100px;margin:0 auto;padding:1.25rem 1.25rem 0;font-size:.85rem;color:var(--text-inv-soft)}
+.crumb a{color:var(--text-inv-soft)}
+/* ROI calculator */
+.roi{display:grid;gap:2rem;margin-top:2rem}
+@media(min-width:900px){.roi{grid-template-columns:1fr 1fr;align-items:start}}
+.roi-form{display:grid;gap:1.25rem;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:2rem}
+.roi-form label{font-weight:600;font-size:.93rem;color:var(--ink);display:grid;gap:.4rem}
+.roi-form input{font:inherit;padding:.7rem .9rem;border:1px solid var(--line);border-radius:10px;min-height:48px;width:100%}
+.roi-form input:focus{outline:3px solid var(--amber);outline-offset:1px}
+.roi-out{background:var(--ink);border-radius:var(--radius);padding:2rem;color:var(--text-inv)}
+.roi-out .big{font-size:clamp(1.9rem,4vw,2.6rem);font-weight:800;color:var(--amber);letter-spacing:-.02em}
+.roi-out p{color:var(--text-inv-soft);font-size:.95rem;margin-top:.5rem}
+.roi-row{display:flex;justify-content:space-between;gap:1rem;padding:.8rem 0;border-bottom:1px solid var(--ink-3);font-size:.95rem}
+.roi-row b{color:var(--text-inv)}
+
 /* footer */
 .bfoot{background:var(--ink);color:var(--text-inv-soft);padding:2.5rem 1.25rem;font-size:.9rem}
 .bfoot-in{max-width:1100px;margin-inline:auto;display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between}

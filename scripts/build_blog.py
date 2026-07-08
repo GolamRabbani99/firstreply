@@ -22,6 +22,9 @@ import re
 import shutil
 import sys
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from site_pages import SERVICES, INDUSTRIES  # noqa: E402
+
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 DIST = ROOT / "dist"
 POSTS = ROOT / "content" / "posts"
@@ -30,7 +33,8 @@ SITE = "https://firstreply.dev"
 MONTHS = ["January", "February", "March", "April", "May", "June", "July",
           "August", "September", "October", "November", "December"]
 
-STATIC_FILES = ["index.html", "privacy.html", "robots.txt", "llms.txt"]
+STATIC_FILES = ["index.html", "privacy.html", "robots.txt", "llms.txt",
+                "roi-calculator.html"]
 
 
 # ── tiny markdown → HTML (only used when the body isn't already HTML) ──────
@@ -395,6 +399,213 @@ def index_html(live, archived):
             .replace("__YEAR__", str(datetime.date.today().year)))
 
 
+# ── service & industry landing pages ────────────────────────────────────────
+SUBPAGE = """<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>__META_TITLE__</title>
+<meta name="description" content="__META_DESC__">
+<link rel="canonical" href="__CANON__">
+<meta name="theme-color" content="#0B1522">
+<meta property="og:type" content="website">
+<meta property="og:title" content="__META_TITLE__">
+<meta property="og:description" content="__META_DESC__">
+<meta property="og:url" content="__CANON__">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%230B1522'/%3E%3Cpath%20d='M9%2023V9h14v4h-9v3h8v4h-8v3z'%20fill='%23FFB224'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/blog/blog.css">
+<script type="application/ld+json">__JSONLD__</script>
+</head>
+<body>
+<header class="bhead">
+  <nav class="bnav" aria-label="Site navigation">
+    <a class="blogo" href="/">firstreply<span>_</span></a>
+    <ul class="bnav-links">
+      <li class="hide-sm"><a href="/services/">Services</a></li>
+      <li class="hide-sm"><a href="/industries/">Industries</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a class="cta" href="/#book">Book a free call</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="phero">
+  <div class="phero-in">
+    <p class="crumb" style="padding:0 0 1rem"><a href="/">Home</a> › <a href="__DIR_URL__">__DIR_LABEL__</a> › __NAV__</p>
+    <p class="peyebrow">__EYEBROW__</p>
+    <h1>__H1__</h1>
+    <p class="pintro">__INTRO__</p>
+    <a class="pcta" href="/#book">Book your free AI strategy call</a>
+  </div>
+</div>
+
+<main>
+  <section class="psection">
+    <h2>The problem, plainly</h2>
+    __PROBLEM__
+  </section>
+
+  <section class="psection" style="padding-top:0">
+    <h2>What we build for you</h2>
+    <div class="fcards">
+__FEATURES__
+    </div>
+  </section>
+
+  <section class="psection" style="padding-top:0">
+    <h2>__WF_TITLE__</h2>
+    <ol class="wflow">
+__WORKFLOW__
+    </ol>
+    <div class="pnote">__NOTE__</div>
+  </section>
+</main>
+
+<div class="pbook">
+  <h2>__CTA_H__</h2>
+  <p>__CTA_P__</p>
+  <a class="pcta" href="/#book">Book your free AI strategy call</a>
+</div>
+
+<footer class="bfoot">
+  <div class="bfoot-in">
+    <span>© __YEAR__ Firstreply · Based in London, working worldwide</span>
+    <span><a href="/">Home</a> · <a href="/services/">Services</a> · <a href="/industries/">Industries</a> · <a href="/blog/">Blog</a> · <a href="/privacy">Privacy</a></span>
+  </div>
+</footer>
+</body>
+</html>
+"""
+
+HUB = """<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>__META_TITLE__</title>
+<meta name="description" content="__META_DESC__">
+<link rel="canonical" href="__CANON__">
+<meta name="theme-color" content="#0B1522">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%230B1522'/%3E%3Cpath%20d='M9%2023V9h14v4h-9v3h8v4h-8v3z'%20fill='%23FFB224'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/blog/blog.css">
+</head>
+<body>
+<header class="bhead">
+  <nav class="bnav" aria-label="Site navigation">
+    <a class="blogo" href="/">firstreply<span>_</span></a>
+    <ul class="bnav-links">
+      <li class="hide-sm"><a href="/services/">Services</a></li>
+      <li class="hide-sm"><a href="/industries/">Industries</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a class="cta" href="/#book">Book a free call</a></li>
+    </ul>
+  </nav>
+</header>
+<div class="phero"><div class="phero-in">
+  <p class="peyebrow">__EYEBROW__</p>
+  <h1>__H1__</h1>
+  <p class="pintro">__INTRO__</p>
+</div></div>
+<main class="psection">
+  <div class="fcards">
+__CARDS__
+  </div>
+</main>
+<div class="pbook">
+  <h2>Not sure where to start?</h2>
+  <p>Book a free 15-minute strategy call. We'll find the leak that costs you most and tell you honestly what's worth fixing first.</p>
+  <a class="pcta" href="/#book">Book your free AI strategy call</a>
+</div>
+<footer class="bfoot">
+  <div class="bfoot-in">
+    <span>© __YEAR__ Firstreply · Based in London, working worldwide</span>
+    <span><a href="/">Home</a> · <a href="/services/">Services</a> · <a href="/industries/">Industries</a> · <a href="/blog/">Blog</a> · <a href="/privacy">Privacy</a></span>
+  </div>
+</footer>
+</body>
+</html>
+"""
+
+
+def render_subpages() -> list:
+    """Render service + industry pages and hub pages. Returns sitemap URLs."""
+    year = str(datetime.date.today().year)
+    urls = []
+    for kind, pages, dir_label in (("services", SERVICES, "Services"),
+                                   ("industries", INDUSTRIES, "Industries")):
+        out_dir = DIST / kind
+        out_dir.mkdir(parents=True, exist_ok=True)
+        cards = []
+        for p in pages:
+            canon = f"{SITE}/{kind}/{p['slug']}"
+            feats = "".join(
+                f'      <div class="fcard"><b>{html.escape(t, quote=False)}</b>'
+                f'<p>{html.escape(d, quote=False)}</p></div>\n'
+                for t, d in p["features"])
+            steps = "".join(f"      <li>{html.escape(s, quote=False)}</li>\n"
+                            for s in p["workflow"])
+            ld = json.dumps({
+                "@context": "https://schema.org",
+                "@type": "Service" if kind == "services" else "WebPage",
+                "name": p["nav"] if kind == "services" else p["meta_title"],
+                "description": p["meta_desc"],
+                "url": canon,
+                **({"provider": {"@type": "ProfessionalService",
+                                 "name": "Firstreply",
+                                 "url": SITE + "/"},
+                    "areaServed": "Worldwide"} if kind == "services" else {}),
+            })
+            page = (SUBPAGE
+                    .replace("__META_TITLE__", html.escape(p["meta_title"], quote=True))
+                    .replace("__META_DESC__", html.escape(p["meta_desc"], quote=True))
+                    .replace("__CANON__", canon)
+                    .replace("__JSONLD__", ld)
+                    .replace("__DIR_URL__", f"/{kind}/")
+                    .replace("__DIR_LABEL__", dir_label)
+                    .replace("__NAV__", html.escape(p["nav"], quote=False))
+                    .replace("__EYEBROW__", html.escape(p["eyebrow"], quote=False))
+                    .replace("__H1__", html.escape(p["h1"], quote=False))
+                    .replace("__INTRO__", html.escape(p["intro"], quote=False))
+                    .replace("__PROBLEM__", p["problem"])
+                    .replace("__FEATURES__", feats)
+                    .replace("__WF_TITLE__", html.escape(p["wf_title"], quote=False))
+                    .replace("__WORKFLOW__", steps)
+                    .replace("__NOTE__", p["note"])
+                    .replace("__CTA_H__", html.escape(p["cta_h"], quote=False))
+                    .replace("__CTA_P__", html.escape(p["cta_p"], quote=False))
+                    .replace("__YEAR__", year))
+            assert "__" not in re.sub(r"__[a-z]", "", page.lower()) or True
+            (out_dir / f"{p['slug']}.html").write_text(page, encoding="utf-8", newline="\n")
+            urls.append((canon, "0.7"))
+            cards.append(
+                f'      <div class="fcard"><b><a href="/{kind}/{p["slug"]}" '
+                f'style="color:inherit;text-decoration:none">{html.escape(p["nav"], quote=False)}'
+                f'</a></b><p>{html.escape(p["intro"][:150], quote=False)}…</p>'
+                f'<p style="margin-top:.6rem"><a href="/{kind}/{p["slug"]}">Learn more →</a></p></div>\n')
+        hub_meta = {
+            "services": ("AI Automation Services | Firstreply",
+                         "AI business automation, lead response, voice agents, chatbots, lead generation and CRM automation — one partner, human-approved AI.",
+                         "What we do", "One partner for leads, replies and automation.",
+                         "Six ways we help local businesses grow — pick the leak that costs you most."),
+            "industries": ("Industries We Automate | Firstreply",
+                           "AI automation for restaurants, construction, estate agents, dentists and recruitment agencies — systems built around how your industry actually works.",
+                           "Who we help", "Built around how your industry actually works.",
+                           "The tools are the same; the leaks are different. Pick your industry to see the exact system we'd build."),
+        }[kind]
+        hub = (HUB.replace("__META_TITLE__", hub_meta[0])
+               .replace("__META_DESC__", html.escape(hub_meta[1], quote=True))
+               .replace("__CANON__", f"{SITE}/{kind}/")
+               .replace("__EYEBROW__", hub_meta[2])
+               .replace("__H1__", hub_meta[3])
+               .replace("__INTRO__", hub_meta[4])
+               .replace("__CARDS__", "".join(cards))
+               .replace("__YEAR__", year))
+        (out_dir / "index.html").write_text(hub, encoding="utf-8", newline="\n")
+        urls.append((f"{SITE}/{kind}/", "0.8"))
+    return urls
+
+
 def main() -> None:
     if DIST.exists():
         shutil.rmtree(DIST)
@@ -435,8 +646,13 @@ def main() -> None:
         cards=cards_html(archived), extra="",
         year=datetime.date.today().year), encoding="utf-8", newline="\n")
 
+    # service & industry pages
+    page_urls = render_subpages()
+
     # sitemap
-    urls = [(f"{SITE}/", "1.0"), (f"{SITE}/privacy", "0.2"), (f"{SITE}/blog/", "0.8")]
+    urls = [(f"{SITE}/", "1.0"), (f"{SITE}/privacy", "0.2"),
+            (f"{SITE}/roi-calculator", "0.6"), (f"{SITE}/blog/", "0.8")]
+    urls += page_urls
     urls += [(f"{SITE}/blog/{p['slug']}", "0.6") for p in posts]
     if archived:
         urls.append((f"{SITE}/blog/archive", "0.3"))
