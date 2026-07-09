@@ -34,7 +34,8 @@ MONTHS = ["January", "February", "March", "April", "May", "June", "July",
           "August", "September", "October", "November", "December"]
 
 STATIC_FILES = ["index.html", "privacy.html", "robots.txt", "llms.txt",
-                "roi-calculator.html"]
+                "roi-calculator.html", "about.html", "case-studies.html",
+                "resources.html"]
 
 
 # ── tiny markdown → HTML (only used when the body isn't already HTML) ──────
@@ -651,7 +652,9 @@ def main() -> None:
 
     # sitemap
     urls = [(f"{SITE}/", "1.0"), (f"{SITE}/privacy", "0.2"),
-            (f"{SITE}/roi-calculator", "0.6"), (f"{SITE}/blog/", "0.8")]
+            (f"{SITE}/roi-calculator", "0.6"), (f"{SITE}/about", "0.5"),
+            (f"{SITE}/case-studies", "0.6"), (f"{SITE}/resources", "0.5"),
+            (f"{SITE}/blog/", "0.8")]
     urls += page_urls
     urls += [(f"{SITE}/blog/{p['slug']}", "0.6") for p in posts]
     if archived:
