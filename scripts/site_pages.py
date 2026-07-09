@@ -126,7 +126,7 @@ SERVICES = [
         "slug": "lead-generation",
         "nav": "Lead generation & paid ads",
         "meta_title": "Lead Generation Agency — Meta & Google Ads | Firstreply",
-        "meta_desc": "We don't just automate leads — we generate them. Meta & Google ads, landing pages, funnels and server-side tracking, run by a marketer with 5+ years on Meta.",
+        "meta_desc": "We don't just automate leads — we generate them. Meta and Google ads, landing pages, funnels and honest server-side tracking.",
         "eyebrow": "Service · Lead generation & paid marketing",
         "h1": "We don't just automate your leads. We generate them.",
         "intro": "Ads run by a marketer with 5+ years of hands-on Meta experience, landing pages built to convert, and tracking that tells you the truth about every pound — connected straight into the automation that answers each lead in 60 seconds.",
