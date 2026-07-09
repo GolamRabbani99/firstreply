@@ -205,7 +205,7 @@ PAGE_SHELL = """<!DOCTYPE html>
     <ul class="bnav-links">
       <li class="hide-sm"><a href="/#services">Services</a></li>
       <li><a href="/blog/">Blog</a></li>
-      <li><a class="cta" href="/#book">Book a free audit</a></li>
+      <li><a class="cta" href="/#book">Book a free call</a></li>
     </ul>
   </nav>
 </header>
@@ -299,7 +299,7 @@ INDEX_PAGE = """<!DOCTYPE html>
     <ul class="bnav-links">
       <li class="hide-sm"><a href="/#services">Services</a></li>
       <li><a href="/blog/" aria-current="page">Blog</a></li>
-      <li><a class="cta" href="/#book">Book a free audit</a></li>
+      <li><a class="cta" href="/#book">Book a free call</a></li>
     </ul>
   </nav>
 </header>
