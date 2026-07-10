@@ -51,7 +51,7 @@
     anywhere else, and will not post at all until you replace the placeholder.
   · frame-src is locked to Calendly, which is only loaded click-to-activate.
 -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://YOUR-N8N-DOMAIN.example; frame-src https://calendly.com https://*.calendly.com; form-action 'self'; base-uri 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://YOUR-N8N-DOMAIN.example; frame-src https://calendly.com https://*.calendly.com; form-action 'self'; base-uri 'none'; upgrade-insecure-requests">
 
 <title>AI Automation Agency London | Firstreply — Growth Partner</title>
 <meta name="description" content="AI business automation &amp; growth partner for local businesses: lead generation, 60-second responses, chatbots, voice agents and CRM automation. GDPR-first.">
@@ -1309,5 +1309,6 @@ if (demoEl) {
 console.log('%cfirstreply_ %c$ whoami\nBuilt in vanilla HTML/CSS/JS by an automation engineer.\nNo frameworks were harmed. Pipeline status: operational ✓',
   'color:#FFB224;font-weight:bold', 'color:#2DD4BF');
 </script>
+<script src="/chat.js" defer></script>
 </body>
 </html>

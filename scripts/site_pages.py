@@ -118,7 +118,7 @@ SERVICES = [
             "Qualified lead lands in your CRM with the full conversation",
             "Your booking link goes out — or you step in personally for big jobs",
         ],
-        "note": "<b>Honest note:</b> a chatbot that pretends to be human, or answers questions it doesn't know, damages trust faster than slow replies ever did. Ours introduce themselves as assistants, stick to what they know, and escalate the rest.",
+        "note": "<b>Try one right now:</b> the assistant in the corner of this page is a small scripted example — tap it and ask about pricing. <b>Honest note:</b> a chatbot that pretends to be human, or answers questions it doesn't know, damages trust faster than slow replies ever did. Ours introduce themselves as assistants, stick to what they know, and escalate the rest.",
         "cta_h": "Put an assistant in your DMs",
         "cta_p": "Book a free 15-minute strategy call. Bring your most-repeated customer question — we'll show you how the bot would handle it.",
     },

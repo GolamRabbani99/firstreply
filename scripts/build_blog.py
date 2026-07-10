@@ -35,7 +35,7 @@ MONTHS = ["January", "February", "March", "April", "May", "June", "July",
 
 STATIC_FILES = ["index.html", "privacy.html", "robots.txt", "llms.txt",
                 "roi-calculator.html", "about.html", "case-studies.html",
-                "resources.html"]
+                "resources.html", "chat.js"]
 
 
 # ── tiny markdown → HTML (only used when the body isn't already HTML) ──────
@@ -228,6 +228,7 @@ PAGE_SHELL = """<!DOCTYPE html>
     <span><a href="/">Home</a> · <a href="/blog/">Blog</a> · <a href="/privacy">Privacy</a></span>
   </div>
 </footer>
+<script src="/chat.js" defer></script>
 </body>
 </html>
 """
@@ -366,6 +367,7 @@ document.querySelectorAll('.plist a').forEach(function (a) {
   });
 });
 </script>
+<script src="/chat.js" defer></script>
 </body>
 </html>
 """
@@ -475,6 +477,7 @@ __WORKFLOW__
     <span><a href="/">Home</a> · <a href="/services/">Services</a> · <a href="/industries/">Industries</a> · <a href="/blog/">Blog</a> · <a href="/privacy">Privacy</a></span>
   </div>
 </footer>
+<script src="/chat.js" defer></script>
 </body>
 </html>
 """
@@ -524,6 +527,7 @@ __CARDS__
     <span><a href="/">Home</a> · <a href="/services/">Services</a> · <a href="/industries/">Industries</a> · <a href="/blog/">Blog</a> · <a href="/privacy">Privacy</a></span>
   </div>
 </footer>
+<script src="/chat.js" defer></script>
 </body>
 </html>
 """
