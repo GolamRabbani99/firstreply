@@ -452,6 +452,10 @@ header{background:var(--ink)}
 .metric b .arrow{color:var(--teal)}
 .metric span{font-size:.9rem;color:var(--text-soft)}
 .proof-links{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.5rem}
+.logo-strip{display:flex;align-items:center;gap:2rem;flex-wrap:wrap;margin-top:1.25rem}
+.logo-strip img{height:32px;width:auto;filter:grayscale(1);opacity:.75;transition:all .2s}
+.logo-strip img:hover{filter:none;opacity:1}
+.logo-strip .logo-text{font-weight:700;color:var(--text-soft);font-size:.9rem}
 
 /* ═══════════ STEPS ═══════════ */
 .steps{display:grid;gap:1.25rem;margin-top:2.5rem;counter-reset:step}
@@ -910,6 +914,11 @@ body{padding-bottom:0}
           <p style="font-size:.85rem;color:var(--text-soft);margin-top:1.5rem">▶ Press play below to watch the system handle a real Saturday-night enquiry.</p>
           <p style="font-size:.85rem;color:var(--text-soft);margin-top:.5rem">Or work out what slow replies cost <em>your</em> business — <a href="/roi-calculator">try the free ROI calculator</a>.</p>
           <p style="font-size:.85rem;color:var(--text-soft);margin-top:.5rem">Founder's ads track record: <strong>£22k+ managed spend · 5,500+ leads</strong> across education and design businesses — <a href="/case-studies">see the numbers</a>.</p>
+          <div class="logo-strip" aria-label="Businesses the founder has run campaigns for">
+            <img src="/blog/images/logo-explorex.png" alt="ExploreX" height="32" loading="lazy">
+            <img src="/blog/images/logo-radixpoint.png" alt="Radix Point" height="32" loading="lazy">
+            <span class="logo-text">London Pioneer Education</span>
+          </div>
         </div>
         <div>
           <div class="metric"><b>4 hrs <span class="arrow">→</span> 60 sec</b><span>average first-response time, before → after</span></div>
