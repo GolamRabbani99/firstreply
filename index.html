@@ -452,10 +452,17 @@ header{background:var(--ink)}
 .metric b .arrow{color:var(--teal)}
 .metric span{font-size:.9rem;color:var(--text-soft)}
 .proof-links{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.5rem}
-.logo-strip{display:flex;align-items:center;gap:2rem;flex-wrap:wrap;margin-top:1.25rem}
-.logo-strip img{height:32px;width:auto;filter:grayscale(1);opacity:.75;transition:all .2s}
-.logo-strip img:hover{filter:none;opacity:1}
-.logo-strip .logo-text{font-weight:700;color:var(--text-soft);font-size:.9rem}
+.clients{margin-top:3rem}
+.clients-h{text-align:center;font-size:.82rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-soft)}
+.clients-grid{display:grid;gap:1.25rem;margin-top:1.5rem}
+@media(min-width:700px){.clients-grid{grid-template-columns:repeat(3,1fr)}}
+.client-tile{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:1.75rem 1.5rem;display:flex;flex-direction:column;align-items:center;gap:.6rem;text-decoration:none;color:var(--text);text-align:center;transition:transform .15s ease,box-shadow .15s ease}
+.client-tile:hover{transform:translateY(-4px);box-shadow:0 14px 36px rgba(11,21,34,.16)}
+.client-logo{height:60px;display:flex;align-items:center;justify-content:center}
+.client-logo img{max-height:60px;width:auto;max-width:190px}
+.client-tile b{color:var(--ink);font-size:1.02rem}
+.client-tile small{color:var(--text-soft);font-size:.82rem}
+.client-metric{font-size:.85rem;font-weight:700;color:var(--amber-deep);background:#FFF3D6;border-radius:99px;padding:.35rem .9rem;margin-top:.25rem}
 
 /* ═══════════ STEPS ═══════════ */
 .steps{display:grid;gap:1.25rem;margin-top:2.5rem;counter-reset:step}
@@ -914,11 +921,6 @@ body{padding-bottom:0}
           <p style="font-size:.85rem;color:var(--text-soft);margin-top:1.5rem">▶ Press play below to watch the system handle a real Saturday-night enquiry.</p>
           <p style="font-size:.85rem;color:var(--text-soft);margin-top:.5rem">Or work out what slow replies cost <em>your</em> business — <a href="/roi-calculator">try the free ROI calculator</a>.</p>
           <p style="font-size:.85rem;color:var(--text-soft);margin-top:.5rem">Founder's ads track record: <strong>£22k+ managed spend · 5,500+ leads</strong> across education and design businesses — <a href="/case-studies">see the numbers</a>.</p>
-          <div class="logo-strip" aria-label="Businesses the founder has run campaigns for">
-            <img src="/blog/images/logo-explorex.png" alt="ExploreX" height="32" loading="lazy">
-            <img src="/blog/images/logo-radixpoint.png" alt="Radix Point" height="32" loading="lazy">
-            <span style="display:inline-flex;align-items:center;gap:.5rem"><img src="/blog/images/logo-pioneer.png" alt="" height="32" style="border-radius:6px" loading="lazy"><span class="logo-text">London Pioneer Education</span></span>
-          </div>
         </div>
         <div>
           <div class="metric"><b>4 hrs <span class="arrow">→</span> 60 sec</b><span>average first-response time, before → after</span></div>
@@ -947,6 +949,29 @@ body{padding-bottom:0}
               <p class="stamp step" style="animation-delay:7.3s">⏱ enquiry → reply: <b style="color:var(--amber)">00:58</b> · follow-up scheduled for day 3</p>
             </div>
           </div>
+        </div>
+      </div>
+      <div class="clients reveal">
+        <p class="clients-h">Clients we&rsquo;ve already worked with &mdash; social media marketing &amp; lead generation</p>
+        <div class="clients-grid">
+          <a class="client-tile" href="/case-studies">
+            <span class="client-logo"><img src="/blog/images/logo-explorex.png" alt="ExploreX logo" loading="lazy"></span>
+            <b>ExploreX</b>
+            <small>Education consultancy · UK</small>
+            <span class="client-metric">4,000+ leads from £15k</span>
+          </a>
+          <a class="client-tile" href="/case-studies">
+            <span class="client-logo"><img src="/blog/images/logo-pioneer.png" alt="London Pioneer Education logo" style="border-radius:10px" loading="lazy"></span>
+            <b>London Pioneer Education</b>
+            <small>Education consultancy · UK</small>
+            <span class="client-metric">1,000+ leads from £5k</span>
+          </a>
+          <a class="client-tile" href="/case-studies">
+            <span class="client-logo"><img src="/blog/images/logo-radixpoint.png" alt="Radix Point logo" loading="lazy"></span>
+            <b>Radix Point</b>
+            <small>Interior design &amp; construction · Dhaka</small>
+            <span class="client-metric">500 leads from £2k</span>
+          </a>
         </div>
       </div>
     </div>
