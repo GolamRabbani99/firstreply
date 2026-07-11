@@ -14,6 +14,7 @@
 - Founder: Golam Rabbani — MSc Computer Network & System Security (University of Hertfordshire), ex-Digital Marketing Manager with 5+ years of Facebook/Meta ads experience, n8n and Python automation specialist
 - AI never messages customers without human approval — approval gates are built into every workflow
 - GDPR-by-design pipelines; data processing agreement available; no long contracts
+- Founder's ads track record: £22k+ managed spend, 5,500+ leads (ExploreX and Pioneer London education consultancies UK; Radix Point interior design, Dhaka), ~90% of ads rated high-performing
 - Fully remote delivery — clients can be anywhere; calls over video, systems in the cloud
 - Primary offer: free 15-minute "Lead Leak Audit" call
 

@@ -46,7 +46,7 @@
       a: 'Firstreply is run by Golam Rabbani — ex-Digital Marketing Manager (5+ years on Meta ads) with an MSc in Computer Network & System Security. Based in London, working remotely with clients anywhere.',
       c: [['About us', '/about'], ['Our one real case study', '/case-studies']] },
     { k: ['case stud', 'proof', 'result', 'client', 'testimonial', 'review', 'diji'],
-      a: 'One case study, a real one: Diji Catering (London) went from 4-hour first replies to 60 seconds, with every reply human-approved and zero enquiries missed since launch. We don’t publish invented testimonials.',
+      a: 'Two kinds of proof, both real:\n• Firstreply case study: Diji Catering (London) — 4-hour replies down to 60 seconds, zero enquiries missed.\n• Founder’s ads track record: £22k+ managed spend, 5,500+ leads across ExploreX, Pioneer London and Radix Point, at £3.75–£5 per lead.\nNo invented testimonials, ever.',
       c: [['Read the case study', '/case-studies'], ['Watch the 60-sec simulation', '/#proof']] },
     { k: ['roi', 'calculator', 'worth', 'lose', 'losing', 'cost me'],
       a: 'Try the free ROI calculator — you enter your own enquiry numbers and it shows what slow replies cost you monthly. No email required, assumptions stated.',
