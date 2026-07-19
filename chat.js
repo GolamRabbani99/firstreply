@@ -171,6 +171,7 @@
   }
 
   function open() {
+    if (typeof window.frTrack === 'function') window.frTrack('chat_opened', { page: location.pathname });
     if (panel) { panel.hidden = false; input.focus(); return; }
     panel = el('div', 'frc-panel');
     panel.setAttribute('role', 'dialog');

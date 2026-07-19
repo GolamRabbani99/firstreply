@@ -35,7 +35,7 @@ MONTHS = ["January", "February", "March", "April", "May", "June", "July",
 
 STATIC_FILES = ["index.html", "privacy.html", "robots.txt", "llms.txt",
                 "roi-calculator.html", "about.html", "case-studies.html",
-                "resources.html", "chat.js"]
+                "resources.html", "chat.js", "track.js"]
 
 
 # ── tiny markdown → HTML (only used when the body isn't already HTML) ──────
@@ -195,6 +195,11 @@ PAGE_SHELL = """<!DOCTYPE html>
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
 <meta property="og:url" content="{canon}">
+<meta property="og:image" content="https://firstreply.dev/blog/images/og-default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://firstreply.dev/blog/images/og-default.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%230B1522'/%3E%3Cpath%20d='M9%2023V9h14v4h-9v3h8v4h-8v3z'%20fill='%23FFB224'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="/blog/blog.css">
 </head>
@@ -228,6 +233,8 @@ PAGE_SHELL = """<!DOCTYPE html>
     <span><a href="/">Home</a> · <a href="/blog/">Blog</a> · <a href="/privacy">Privacy</a></span>
   </div>
 </footer>
+<script defer src="/_vercel/insights/script.js"></script>
+<script src="/track.js" defer></script>
 <script src="/chat.js" defer></script>
 </body>
 </html>
@@ -367,6 +374,8 @@ document.querySelectorAll('.plist a').forEach(function (a) {
   });
 });
 </script>
+<script defer src="/_vercel/insights/script.js"></script>
+<script src="/track.js" defer></script>
 <script src="/chat.js" defer></script>
 </body>
 </html>
@@ -416,6 +425,11 @@ SUBPAGE = """<!DOCTYPE html>
 <meta property="og:title" content="__META_TITLE__">
 <meta property="og:description" content="__META_DESC__">
 <meta property="og:url" content="__CANON__">
+<meta property="og:image" content="https://firstreply.dev/blog/images/og-default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://firstreply.dev/blog/images/og-default.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%230B1522'/%3E%3Cpath%20d='M9%2023V9h14v4h-9v3h8v4h-8v3z'%20fill='%23FFB224'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="/blog/blog.css">
 <script type="application/ld+json">__JSONLD__</script>
@@ -477,6 +491,8 @@ __WORKFLOW__
     <span><a href="/">Home</a> · <a href="/services/">Services</a> · <a href="/industries/">Industries</a> · <a href="/blog/">Blog</a> · <a href="/privacy">Privacy</a></span>
   </div>
 </footer>
+<script defer src="/_vercel/insights/script.js"></script>
+<script src="/track.js" defer></script>
 <script src="/chat.js" defer></script>
 </body>
 </html>
@@ -527,6 +543,8 @@ __CARDS__
     <span><a href="/">Home</a> · <a href="/services/">Services</a> · <a href="/industries/">Industries</a> · <a href="/blog/">Blog</a> · <a href="/privacy">Privacy</a></span>
   </div>
 </footer>
+<script defer src="/_vercel/insights/script.js"></script>
+<script src="/track.js" defer></script>
 <script src="/chat.js" defer></script>
 </body>
 </html>
@@ -550,8 +568,7 @@ def render_subpages() -> list:
                 for t, d in p["features"])
             steps = "".join(f"      <li>{html.escape(s, quote=False)}</li>\n"
                             for s in p["workflow"])
-            ld = json.dumps({
-                "@context": "https://schema.org",
+            main_entity = {
                 "@type": "Service" if kind == "services" else "WebPage",
                 "name": p["nav"] if kind == "services" else p["meta_title"],
                 "description": p["meta_desc"],
@@ -560,7 +577,17 @@ def render_subpages() -> list:
                                  "name": "Firstreply",
                                  "url": SITE + "/"},
                     "areaServed": "Worldwide"} if kind == "services" else {}),
-            })
+            }
+            breadcrumb = {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE + "/"},
+                    {"@type": "ListItem", "position": 2, "name": dir_label, "item": f"{SITE}/{kind}/"},
+                    {"@type": "ListItem", "position": 3, "name": p["nav"], "item": canon},
+                ],
+            }
+            ld = json.dumps({"@context": "https://schema.org",
+                             "@graph": [main_entity, breadcrumb]})
             page = (SUBPAGE
                     .replace("__META_TITLE__", html.escape(p["meta_title"], quote=True))
                     .replace("__META_DESC__", html.escape(p["meta_desc"], quote=True))
@@ -663,10 +690,11 @@ def main() -> None:
     urls += [(f"{SITE}/blog/{p['slug']}", "0.6") for p in posts]
     if archived:
         urls.append((f"{SITE}/blog/archive", "0.3"))
+    _today = datetime.date.today().isoformat()
     sm = ['<?xml version="1.0" encoding="UTF-8"?>',
           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for loc, pr in urls:
-        sm.append(f"  <url>\n    <loc>{loc}</loc>\n    <priority>{pr}</priority>\n  </url>")
+        sm.append(f"  <url>\n    <loc>{loc}</loc>\n    <lastmod>{_today}</lastmod>\n    <priority>{pr}</priority>\n  </url>")
     sm.append("</urlset>\n")
     (DIST / "sitemap.xml").write_text("\n".join(sm), encoding="utf-8", newline="\n")
 
