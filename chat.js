@@ -11,7 +11,8 @@
 
   var BOOK = '/#book';
   var CAL = 'https://calendly.com/golamrabbani-com/lead-leak-audit';
-  var MAIL = 'mailto:golamrabbani.com@gmail.com';
+  var MAIL = 'mailto:golam@firstreply.dev';
+  var TEL = 'tel:+447535421734';
 
   /* ── knowledge base ─────────────────────────────────────────────── */
   var INTENTS = [
@@ -55,8 +56,8 @@
       a: 'Absolutely — I’m only the doorman. Golam reads every message personally.',
       c: [['Book a call with Golam', CAL], ['Email him directly', MAIL]] },
     { k: ['email', 'contact', 'reach', 'message you'],
-      a: 'You can email golamrabbani.com@gmail.com — a human replies, usually within one working day. Or book the free 15-minute call.',
-      c: [['Email us', MAIL], ['Book a free call', BOOK]] },
+      a: 'You can email golam@firstreply.dev or call 07535 421734 — a human replies, usually within one working day. Or book the free 15-minute call.',
+      c: [['Email us', MAIL], ['Call 07535 421734', TEL], ['Book a free call', BOOK]] },
     { k: ['hello', 'hi', 'hey', 'good morning', 'good afternoon', 'good evening'],
       a: 'Hello! I’m the Firstreply assistant — the scripted little sibling of the systems we build for clients. Ask me about services, pricing or booking, or tap a button below.',
       c: [['What do you do?', '@what do you do'], ['Pricing', '@pricing'], ['Book a free call', BOOK]] },
@@ -66,7 +67,7 @@
   ];
   var FALLBACK = {
     a: 'That one’s beyond my script — I’m an honest bot, so I won’t guess. A human can answer it properly:',
-    c: [['Book a free 15-min call', CAL], ['Email golamrabbani.com@gmail.com', MAIL], ['Browse services', '/services/']]
+    c: [['Book a free 15-min call', CAL], ['Email golam@firstreply.dev', MAIL], ['Browse services', '/services/']]
   };
 
   function answer(text) {
