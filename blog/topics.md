@@ -5,7 +5,7 @@ The daily writing routine takes the FIRST unchecked topic, writes the post, then
 ## Queue
 
 - [x] Why your Facebook leads go cold (and the 60-minute rule) — published 2026-07-04
-- [ ] Meta Conversions API explained for non-developers (keyword: meta conversions api setup)
+- [x] Meta Conversions API explained for non-developers (keyword: meta conversions api setup) — published 2026-09-26
 - [ ] How fast should you reply to a catering enquiry? (keyword: catering enquiry response time)
 - [ ] Facebook lead ads vs website forms: which gets better leads? (keyword: facebook lead ads vs landing page)
 - [ ] The real reason your Facebook ads got more expensive after iOS 14 (keyword: facebook ads ios 14 tracking)
